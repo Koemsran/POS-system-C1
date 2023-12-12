@@ -1,13 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="product.css">
     <script type="module" src="product.js" defer></script>
 </head>
+
 <body>
-    <h1>Hello</h1>
+    <div class="container">
+        <nav class="navbar">
+            <div class="bg-logo">
+                <div class="logo"><img src="../../images/logo.png" alt=""></div>
+            </div>
+            <div class="icon">
+                <a href="../home/home.html"><span class="material-symbols-outlined">house</span></a>
+                <a href="#"><span class="active shop material-symbols-outlined">shopping_cart </span></a>
+                <a href="../category/category.html"><span class="material-symbols-outlined">tune</span></a>
+                <a href="../order/order.html"><span class=" material-symbols-outlined">shopping_cart_checkout </span></a>
+
+
+
+            </div>
+        </nav>
+        <main>
+            <div class="main-header">
+                <div class="search-bar">
+                    <span class="search material-symbols-outlined">search</span>
+                    <input type="text" id="find-product" placeholder="Search product here.....">
+                </div>
+
+
+            </div>
+            <div class="main-content">
+                <div class="main-left">
+                    <div class="find-category">
+                        <input type="text" name="search-cart" id="search-cartegory"
+                            placeholder="Search by cargetgory name">
+                    </div>
+                    <div class="action">
+                        <div class="btn-add">
+                            <button><span class="material-symbols-outlined">add_circle</span>Add product</button>
+                        </div>
+                        <div class="right">
+                            <div class="fillter">
+                                <h4>Fillter by category: </h4>
+                                <select name="fill" id="fill">
+                                    <option value="Choose cartegory">Choose cartegory</option>
+                                    <option value="">Perfumes</option>
+                                    <option value="">Lotion</option>
+                                    <option value="">Shambo</option>
+                                    <option value="">Lip balm</option>
+                                </select>
+                            </div>
+                            <div id="search-bar">
+                                <input type="text" id="search" placeholder="Search product......">
+                                <a href=""><span class="search material-symbols-outlined">search</span></a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Product ID</th>
+                            <th class="color" colspan="5">Product Detail</th>
+                        </tr>
+                        <tr id="tr-row">
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Operate</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
 </body>
+
 </html>
