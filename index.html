@@ -1,40 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pos system</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="css/main.css">
     <script src="js/master.js" defer></script>
 </head>
+
 <body>
     <div class="start-login">
-        <!-- <div class="logo">
-            <img src="images/logo.png" alt="">
-        </div> -->
-        <div class="form-login">
-            <h1>Login to system</h1>
-            <div class="user-id">
-                <label for="">User Name</label>
-                <input type="text" id="user-name" placeholder="Enter your username">
-                <span class="name-error" style="display: none; color: red; margin-top: 5px;">Your user name is not correct!</span>
+        <div class="bg-img">
+            <form class="form-login">
+                <h1>Login to system</h1>
+                <div class="user-id">
+                    <label for="">User Name</label>
+                    <input type="text" id="user-name" placeholder="Enter your username">
+                    <span class="name-error" style="display: none; color: red; margin-top: 5px;">Your user name is not
+                        correct!</span>
+                </div>
+                <div class="psw">
+                    <label for="">Password</label>
+                    <div class="input-pass">
+                        <input type="password" id="user-password" placeholder="Enter your password">
+                        <button><span class="off material-symbols-outlined">visibility_off</span></button>
+                        <button><span class="on material-symbols-outlined"
+                                style="display: none;">visibility</span></button>
+                    </div>
+                    <span class="pass-error" style="display: none; color: red; margin-top: 5px;">Your password is not
+                        correct!</span>
 
-                
-            </div>
-            <div class="psw">
-                <label for="">Password</label>
-                <input type="password" id="user-password" placeholder="Enter your password">
-                <span class="pass-error" style="display: none; color: red; margin-top: 5px;">Your password is not correct!</span>
-                <a href=""><i class='bx bx-low-vision'></i></a>
-            </div>
-            <div class="btn-login">
-                <button><a href="">Log In</a></button>
-            </div>
+                </div>
+                <div class="btn-login">
+                    <button><a href="">Log In</a></button>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="container" style="display: none;">
-        <h1>hello world!</h1>
-    </div>
 </body>
+
 </html>
