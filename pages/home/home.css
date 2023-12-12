@@ -45,6 +45,7 @@ main {
     flex-direction: column;
 
 }
+
 .main-header {
     background-color: teal;
     flex: 1;
@@ -52,8 +53,9 @@ main {
     align-items: center;
     padding-left: 10px;
 }
-.main-header .search-bar{
-    
+
+.main-header .search-bar {
+
     width: 25%;
     display: flex;
     gap: 10px;
@@ -61,7 +63,8 @@ main {
     background-color: white;
     border-radius: 20px 0px 20px 0px;
 }
-.search-bar #find-product{
+
+.search-bar #find-product {
     border: none;
 }
 
@@ -69,7 +72,26 @@ main {
     flex: 8;
 }
 
-.sidebar{
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
+caption{
+    font-weight: bold;
+    font-size: 30px;
+    padding: 10px;
+    color: teal;
+} 
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 10px;
+}
+
+.sidebar {
     flex: 4;
     background-color: orange;
 }

@@ -11,7 +11,7 @@
     <script src="home.js" defer></script>
 </head>
 
-<body>
+<body>  
     <div class="container">
         <nav class="navbar">
             <div class="bg-logo">
@@ -20,8 +20,11 @@
             <div class="icon">
                 <a href=""><span class="material-symbols-outlined">house</span></a>
                 <a href=""><span class="shop material-symbols-outlined">shopping_cart </span></a>
-                <a href=""><span class="material-symbols-outlined">category</span></a>
                 <a href=""><span class="material-symbols-outlined">tune</span></a>
+                <span class="material-symbols-outlined">shopping_cart_checkout </span>
+                   
+                    
+                
             </div>
         </nav>
         <main>
@@ -30,10 +33,24 @@
                     <span class="search material-symbols-outlined">search</span>
                     <input type="text" id="find-product" placeholder="Search product here.....">
                 </div>
-                
-                      
+
+
             </div>
-            <div class="main-content"></div>
+            <div class="main-content">
+                <table>
+                    <caption>Top 3 sold products</caption>
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </main>
         <div class="sidebar"></div>
     </div>
