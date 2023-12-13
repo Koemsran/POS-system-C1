@@ -32,7 +32,7 @@ function renderProduct() {
         let tRow = createElement('tr');
 
         let tdId = createElement('td');
-        tdId.textContent = listProduct.id;
+        tdId.textContent = "00" + listProduct.id;
 
         let tdName = createElement('td');
         tdName.textContent = listProduct.name;
