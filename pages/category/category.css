@@ -1,0 +1,138 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.container {
+    display: flex;
+    flex: 10;
+    height: 100vh;
+}
+
+.navbar {
+    flex: 0.5;
+    background-color: #8B4513;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 50px 50px 0px;
+}
+
+.navbar .bg-logo {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    border-radius: 150px 150px 150px 10px;
+}
+
+.navbar .icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.icon span {
+    font-size: 40px;
+    color: white;
+}
+
+main {
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.main-header {
+    background-color: teal;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.main-header .search-bar {
+
+    width: 25%;
+    display: flex;
+    gap: 10px;
+    padding: 7px;
+    background-color: white;
+    border-radius: 20px 0px 20px 0px;
+}
+
+.search-button input[type="text"] {
+    height: 30%;
+    margin-top: 40%;
+
+}
+
+.main-content {
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.table-container {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-category button {
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-color: teal;
+    border-radius: 5px;
+    color: white;
+    margin-top: 40%;
+    margin-left: 100%;
+    width: 100%;
+    border: none;
+}
+
+
+.search-button {
+    border-radius: 5px;
+}
+/* span{
+    background: red;
+  
+} */
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+    margin-top: 2%;
+}
+
+td,
+th {
+    border: 1px solid #979696;
+    text-align: center;
+    padding: 10px;
+}
+
+thead {
+
+    border-bottom: 2px;
+}
+
+thead tr .color {
+    background-color: rgb(224, 214, 216);
+}
+
+tbody tr td {
+    padding: 20px;
+    border-left: none;
+    border-right: none;
+}
