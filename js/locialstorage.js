@@ -19,3 +19,4 @@ export function hide(element){
 export function show(element){
     element.style.display = 'block';
 }
+

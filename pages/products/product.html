@@ -29,7 +29,9 @@
         </nav>
         <div id="add-product" style="display: none">
             <form open>
-                <header><h1>Add product more</h1></header>
+                <header>
+                    <h1>Add product more</h1>
+                </header>
                 <section>
                     <input id="name" type="text" placeholder="Product name" />
                     <select name="" id="cat">
@@ -47,14 +49,9 @@
             </form>
         </div>
         <main>
-            <div class="main-header">
-            </div>
+            <div class="main-header"></div>
             <div class="main-content">
                 <div class="main-left">
-                    <div class="find-category">
-                        <input type="text" name="search-cart" id="search-cartegory"
-                            placeholder="Search by cargetgory name">
-                    </div>
                     <div class="action">
                         <div class="btn-add">
                             <button><span class="material-symbols-outlined">add_circle</span>Add product</button>
@@ -64,10 +61,8 @@
                                 <h4>Fillter by category: </h4>
                                 <select name="fill" id="fill">
                                     <option selected disabled>Choose category</option>
-                                    <option value="Perfumes">Perfumes</option>
-                                    <option value="Lotion">Lotion</option>
-                                    <option value="Shambo">Shambo</option>
                                 </select>
+                                <button id="clear-filter">Clear Filter</button>
                             </div>
                             <div id="search-bar">
                                 <input type="text" id="search" placeholder="Search product......">
@@ -82,14 +77,15 @@
                     <thead>
                         <tr>
                             <th rowspan="2">Product ID</th>
-                            <th class="color" colspan="5">Product Detail</th>
+                            <th class="color" colspan="6">Product Detail</th>
                         </tr>
                         <tr id="tr-row">
                             <th>Product Name</th>
                             <th>Category</th>
                             <th>Quantity</th>
                             <th>Price</th>
-                            <th>Operate</th>
+                            <th>Total Price</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
