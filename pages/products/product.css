@@ -126,9 +126,12 @@ main {
     gap: 10px;
 }
 
-.fillter select {
+.fillter select,
+.fillter button
+{
     padding: 10px;
     border-radius: 5px;
+    border: 1px solid gray;
 }
 
 #search-bar {
@@ -175,7 +178,7 @@ thead tr .color {
 }
 
 tbody tr td {
-    padding: 0px;
+    padding: 10px;
     border-left: none;
     border-right: none;
 
@@ -253,8 +256,8 @@ form label {
     margin-bottom: 0.5rem;
 }
 
-input,
-select {
+section input,
+section select {
     display: block;
     width: 100%;
     border: 1px solid #ccc;
@@ -262,8 +265,8 @@ select {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     padding: 10px;
-    color: gray;
 }
+
 
 menu {
     height: 100%;
@@ -294,9 +297,11 @@ menu button:hover {
 }
 
 .Qty {
-    width: 30%;
+    width: 20%;
     border-radius: 5px;
-    padding: 10px;
+    border: 1px  solid gray;
+    padding: 5px;
+
 
 }
 
@@ -309,4 +314,31 @@ menu button:hover {
     margin: auto;
     display: flex;
     justify-content: flex-end;
+}
+
+.btn-action{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 10px;
+
+}
+.btn-action .remove{
+    color: red;
+    
+
+}
+.btn-action .edit{
+    color: rgb(30, 30, 231);
+    
+
+}
+.btn-action .view{
+    color: teal;
+    cursor: pointer;
+}
+.btn-action .view:hover,
+.edit:hover,
+.remove:hover{
+    cursor: pointer;
 }
