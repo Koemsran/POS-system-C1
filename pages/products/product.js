@@ -10,9 +10,7 @@ let loadProduct = laodData("dataStore");
 if (loadProduct != undefined) {
     dataStore = loadProduct
 }
-// else {
-//     saveData('dataStore', dataStore)
-// }
+
 //=================> FUNCTION <==================
 
 function getTotal() {
@@ -22,7 +20,6 @@ function getTotal() {
     }
     total.textContent = totalPrice + "$"
 }
-
 
 
 function renderProduct() {
