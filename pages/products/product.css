@@ -13,7 +13,7 @@
 
 .navbar {
     flex: 0.5;
-    background-color: 	#8B4513;
+    background-color: black;
     justify-content: center;
     align-items: center;
     border-radius: 0px 50px 50px 0px;
@@ -79,7 +79,7 @@ main {
 .main-left {
     display: flex;
     flex-direction: column;
-    padding: 10px 10px;
+    padding: 20px;
     gap: 50px;
 }
 
@@ -126,9 +126,12 @@ main {
     gap: 10px;
 }
 
-.fillter select {
+.fillter select,
+.fillter button
+{
     padding: 10px;
     border-radius: 5px;
+    border: 1px solid gray;
 }
 
 #search-bar {
@@ -140,7 +143,7 @@ main {
 
 #search-bar input {
     padding: 10px;
-    break-inside: 5px;
+    border-radius: 5px;
 }
 
 #search-bar span {
@@ -148,6 +151,7 @@ main {
     color: rgb(247, 236, 236);
     background-color: green;
     padding: 7px;
+    
 }
 
 table {
@@ -161,7 +165,7 @@ td,
 th {
     border: 1px solid #dddddd;
     text-align: center;
-    padding: 10px;
+    padding: 12px;
 }
 
 thead {
@@ -170,18 +174,199 @@ thead {
 }
 
 thead tr .color {
+<<<<<<< HEAD
     background-color: rgb(224, 214, 216);
+=======
+    background-color: rgb(228, 224, 225);
+>>>>>>> add-product
 }
 
 tbody tr td {
-    padding: 20px;
+    padding: 10px;
     border-left: none;
     border-right: none;
+
 }
 
-.active{
-    background-color: black;
+.active {
+    background-color: rgb(206, 138, 138);
     width: 100%;
-    padding: 15px 20px;
-    border-radius: 30px 0px ;
+    padding: 10px 20px;
+    border-radius: 30px 0px;
+}
+
+
+.add-product {
+    display: none;
+}
+
+
+/* ----------------------------- add product form   --------------------------   */
+
+#add-product {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 10;
+}
+
+form {
+    position: fixed;
+    top: 10vh;
+    left: 30%;
+    width: 50%;
+    z-index: 100;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    background-color: white;
+    text-align: center;
+}
+
+form header {
+    background-color: orange;
+    color: black;
+    font-size: 1.25rem;
+    width: 100%;
+    padding: 1rem;
+}
+
+form header h1 {
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+form section {
+    padding: 1rem;
+}
+
+form menu {
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+section input,
+section select {
+    display: block;
+    width: 100%;
+    border: 1px solid #ccc;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 10px;
+}
+
+
+menu {
+    height: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+menu button {
+    padding: 7px;
+    width: 10%;
+    border-radius: 5px;
+    border: none;
+    background-color: blue;
+    color: white;
+}
+
+menu button:hover {
+    background-color: gray;
+}
+
+.tdQuan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Qty {
+    width: 20%;
+    border-radius: 5px;
+    border: 1px  solid gray;
+    padding: 5px;
+
+
+}
+
+.Qty:hover {
+    border: 1px solid rgb(15, 13, 131);
+}
+
+.output {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-action{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 10px;
+
+}
+.btn-action .remove{
+    color: red;
+    
+
+}
+.btn-action .edit{
+    color: rgb(30, 30, 231);
+    
+
+}
+.btn-action .view{
+    color: teal;
+    cursor: pointer;
+}
+.btn-action .view:hover,
+.edit:hover,
+.remove:hover{
+    cursor: pointer;
+}
+.output{
+    width: 100%;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+.output h3:nth-child(2){
+    width: 21%;
+    background-color: black;
+    padding: 10px;
+    color: white;
+    
+}
+.output .total{
+    margin-left: 10px;
+}
+.output h3:nth-child(1){
+    border: 1px solid gray;
+    width: 21%;
+    padding: 10px;
+
 }
