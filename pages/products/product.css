@@ -342,3 +342,27 @@ menu button:hover {
 .remove:hover{
     cursor: pointer;
 }
+.output{
+    width: 100%;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+.output h3:nth-child(2){
+    width: 21%;
+    background-color: black;
+    padding: 10px;
+    color: white;
+    
+}
+.output .total{
+    margin-left: 10px;
+}
+.output h3:nth-child(1){
+    border: 1px solid gray;
+    width: 21%;
+    padding: 10px;
+
+}

@@ -6,12 +6,15 @@ let dataStore = {
     categories: ["perfumes", "lotion", "shambo"],
     latestId: null
 }
+
+
+
+//=================> FUNCTION <==================
+
 let loadProduct = laodData("dataStore");
 if (loadProduct != undefined) {
     dataStore = loadProduct
 }
-
-//=================> FUNCTION <==================
 
 function getTotal() {
     let totalPrice = 0
@@ -27,12 +30,14 @@ function renderProduct() {
     //insert form
     let newTbody = createElement('tbody');
     let totalPrice = 0;
+    let totalQuantity = 0;
     for (let listProduct of dataStore.products) {
 
         let tRow = createElement('tr');
 
         let tdId = createElement('td');
         tdId.textContent = "00" + listProduct.id;
+
 
         let tdName = createElement('td');
         tdName.textContent = listProduct.name;
@@ -42,11 +47,13 @@ function renderProduct() {
 
         let tdQuan = createElement('td');
         tdQuan.className = 'tdQuan';
+        tdQuan.dataset.id = listProduct.id;
 
         let qty = createElement('input')
         qty.className = 'Qty'
         qty.type = 'number';
         qty.value = listProduct.quantity;
+        qty.addEventListener('change', updateQuantity)
 
 
         let tdPrice = createElement('td');
@@ -92,10 +99,14 @@ function renderProduct() {
 
         newTbody.appendChild(tRow);
         table.appendChild(newTbody);
+        getBtn(newTbody)
         totalPrice += parseInt(tdTotalPrice.textContent);
+        totalQuantity += parseInt(qty.value)
     }
 
     total.textContent = parseInt(totalPrice) + '$'
+    totalQuant.textContent = parseInt(totalQuantity)
+
 
 
 }
@@ -146,6 +157,20 @@ function clearForm() {
     inputQuan.value = ''
     inputNetPrice.value = ''
     inputGrossPrice.value = ''
+}
+
+function updateQuantity(e) {
+    let qty = e.target.value;
+    let productId = e.target.closest('td').dataset.id;
+    let productIndex = dataStore.products.findIndex(product => product.id === parseInt(productId));
+    dataStore.products[productIndex].quantity = qty;
+
+    saveData('dataStore', dataStore)
+    // update total
+
+    renderProduct()
+    window.location.reload();
+
 }
 
 function categorySelect() {
@@ -205,15 +230,44 @@ function clearFilter() {
     fill.value = 'Choose category'
 }
 
+function removeElement(event) {
+    let indexTr = event.target.closest('tr');
+    let quanlity = indexTr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.value;
 
-//===============> MAIN <====================
+    let isRemove = window.confirm('Do you want to delete all products?');
+    if (isRemove) {
+        indexTr.remove();
+    } else {
+        let productId = indexTr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.dataset.id;
+        let productIndex = dataStore.products.findIndex(product => product.id === parseInt(productId));
+        dataStore.products[productIndex].quantity = quanlity - 1;
+        saveData('dataStore', dataStore)
+        window.location.reload()
+        renderProduct()
+    }
+
+
+
+
+
+}
+function getBtn(tbody) {
+    let btnRemove = tbody.lastElementChild.lastElementChild.lastElementChild.lastElementChild;
+    btnRemove.addEventListener('click', removeElement)
+}
+
+//===============> MAIN ADD PRODUCT FORM <====================
 let table = getElement('table')
 let tbody = getElement('tbody');
 let btnAdd = getElement('.btn-add');
 let addInput = getElement('#add-product')
 let add = getElement('#btn-add');
 let cancel = getElement('#btn-cancel');
-let total = getElement('.total')
+
+// ======================> TOTAL <=======================
+let total = getElement('.total');
+let totalQuant = getElement('.total-quan');
+
 // ================> GET INPUT FORM <=====================
 let inputName = getElement('#name');
 let inputCategory = getElement('#cat');
@@ -227,6 +281,10 @@ let btnClearFilter = getElement('.fillter button');
 
 //===============> SEARCH PRODUCT <=====================
 let search = getElement('#search');
+
+//===================> REMOVE FEATURE <====================
+let btnRemove = table.lastElementChild;
+
 
 // ================> ADD EVENTLISTENER <==================
 btnAdd.addEventListener('click', addProduct);
