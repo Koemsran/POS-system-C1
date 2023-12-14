@@ -126,7 +126,8 @@ function onCancel(event) {
 
 function onAdd(event) {
     event.preventDefault()
-
+    
+    if (inputName.value === '' || inputCategory.value === '' || inputQuan.value === '' || inputNetPrice.value === '' || inputGrossPrice.value === '') return alert('Form is empty cannot add!');
     let proId = dataStore.latestId;
     if (proId === null || dataStore.products.length === 0) {
         proId = 1;
@@ -233,27 +234,42 @@ function clearFilter() {
 function removeElement(event) {
     let indexTr = event.target.closest('tr');
     let quanlity = indexTr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.value;
-
+    let productId = indexTr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.dataset.id;
     let isRemove = window.confirm('Do you want to delete all products?');
+
     if (isRemove) {
-        indexTr.remove();
-    } else {
-        let productId = indexTr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.dataset.id;
+        indexTr.remove()
+        
         let productIndex = dataStore.products.findIndex(product => product.id === parseInt(productId));
-        dataStore.products[productIndex].quantity = quanlity - 1;
+        dataStore.products.splice(1, productIndex);
         saveData('dataStore', dataStore)
-        window.location.reload()
         renderProduct()
+        window.location.reload()
+
     }
 
+    // else {
 
-
-
+    //     let productIndex = dataStore.products.findIndex(product => product.id === parseInt(productId));
+    //     dataStore.products[productIndex].quantity = quanlity - 1;
+    //     saveData('dataStore', dataStore)
+    //     window.location.reload()
+    //     renderProduct()
+    // }
 
 }
+
+function viewElement(event){
+    let indexTr = event.target.closest('tr');
+    show()
+
+}
+
 function getBtn(tbody) {
     let btnRemove = tbody.lastElementChild.lastElementChild.lastElementChild.lastElementChild;
+    let btnView = tbody.lastElementChild.lastElementChild.lastElementChild.lastElementChild;
     btnRemove.addEventListener('click', removeElement)
+    btnView.addEventListener('click', viewElement)
 }
 
 //===============> MAIN ADD PRODUCT FORM <====================
