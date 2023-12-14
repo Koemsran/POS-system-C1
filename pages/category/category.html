@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>category</title>
-    <script src="category_table/category.js" defer></script>
+    <script src="category/category.js" defer></script>
     <link rel="stylesheet" href="category.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet"
@@ -26,6 +26,23 @@
                     </span></a>
             </div>
         </nav>
+        <div id="add-category" style="display: none">
+            <form open>
+                <header>
+                    <h1>Add category more</h1>
+                </header>
+                <section>
+                    <input id="id" type="number" placeholder="ID">
+                    <input id="cateName" type="number" placeholder=" Category name" />
+                    <input id="quan" type="number" placeholder="Quantity" />
+                    <input id="action" type="number" placeholder="Action">
+                </section>
+                <menu>
+                    <button id="btn-cancel">Cancel</button>
+                    <button id="btn-add">Add</button>
+                </menu>
+            </form>
+        </div>
         <main>
             <div class="main-header">
 
@@ -33,11 +50,10 @@
             <div class="main-content">
                 <div class="table-container">
                     <div class="add-category">
-                        <button><span class="material-symbols-outlined">add_circle</span>Add Category</button>
+                        <button><span class="material-symbols-outlined">add_circle</span>Add product</button>
                     </div>
                     <div class="search-button">
                         <input type="text" id="find-product" placeholder="Search category name">
-                        <!-- <a href=""><span class="search material-symbols-outlined">search</span></a> -->
                     </div>
                 </div>
                 <table>
@@ -49,6 +65,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
+                    <tbody></tbody>
                 </table>
             </div>
         </main>
