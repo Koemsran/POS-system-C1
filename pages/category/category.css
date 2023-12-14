@@ -1,0 +1,284 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.container {
+    display: flex;
+    flex: 10;
+    height: 100vh;
+}
+
+.navbar {
+    flex: 0.5;
+    background-color: #8B4513;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 50px 50px 0px;
+}
+
+.navbar .bg-logo {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    border-radius: 150px 150px 150px 10px;
+}
+
+.navbar .icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.icon span {
+    font-size: 40px;
+    color: white;
+}
+
+main {
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.main-header {
+    background-color: teal;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.main-header .search-bar {
+
+    width: 25%;
+    display: flex;
+    gap: 10px;
+    padding: 7px;
+    background-color: white;
+    border-radius: 20px 0px 20px 0px;
+}
+
+.search-button input[type="text"] {
+    height: 30%;
+    margin-top: 40%;
+
+}
+
+.main-content {
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.table-container {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-category button {
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-color: teal;
+    border-radius: 5px;
+    color: white;
+    margin-top: 40%;
+    width: 100%;
+    border: none;
+    margin-left: 100%;
+}
+
+
+.search-button {
+    border-radius: 5px;
+}
+/* span{
+    background: red;
+  
+} */
+table {
+    border-collapse: collapse;
+    width: 81%;
+    margin: auto;
+    margin-top: 2%;
+}
+
+td,
+th {
+    border: 1px solid #979696;
+    text-align: center;
+    padding: 10px;
+}
+
+thead {
+
+    border-bottom: 2px;
+}
+
+thead tr .color {
+    background-color: rgb(224, 214, 216);
+}
+
+tbody tr td {
+    padding: 20px;
+    border-left: none;
+    border-right: none;
+}
+
+
+/* ......add category... */
+#add-product {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 10;
+}
+
+form {
+    position: fixed;
+    top: 10vh;
+    left: 30%;
+    width: 50%;
+    z-index: 100;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    background-color: white;
+    text-align: center;
+}
+
+form header {
+    background-color: orange;
+    color: black;
+    font-size: 1.25rem;
+    width: 100%;
+    padding: 1rem;
+}
+
+form header h1 {
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+form section {
+    padding: 1rem;
+}
+
+form menu {
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+section input,
+section select {
+    display: block;
+    width: 100%;
+    border: 1px solid #ccc;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 10px;
+}
+
+
+menu {
+    height: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+menu button {
+    padding: 7px;
+    width: 10%;
+    border-radius: 5px;
+    border: none;
+    background-color: blue;
+    color: white;
+}
+
+menu button:hover {
+    background-color: gray;
+}
+
+.tdQuan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Qty {
+    width: 20%;
+    border-radius: 5px;
+    border: 1px  solid gray;
+    padding: 5px;
+
+
+}
+
+.Qty:hover {
+    border: 1px solid rgb(15, 13, 131);
+}
+
+.output {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-action{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 10px;
+
+}
+.btn-action .remove{
+    color: red;
+    
+
+}
+.btn-action .edit{
+    color: rgb(30, 30, 231);
+    
+
+}
+.btn-action .view{
+    color: teal;
+    cursor: pointer;
+}
+.btn-action .view:hover,
+.edit:hover,
+.remove:hover{
+    cursor: pointer;
+}
