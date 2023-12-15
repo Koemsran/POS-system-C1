@@ -1,16 +1,18 @@
 
 // Function to render categories
 function renderCategory() {
+
     let createTbody = document.createElement('tbody');
 
     for (let listCategory of category) {
+
         let tdRow = document.createElement('tr');
 
         let tdId = document.createElement('td');
         tdId.textContent = "000" + listCategory.id;
 
         let tdName = document.createElement('td');
-        tdName.textContent = listCategory.name;
+        tdName.textContent = listCategory.cateName;
 
         let tdQuan = document.createElement('td');
         tdQuan.textContent = listCategory.quan;
@@ -27,45 +29,39 @@ function renderCategory() {
     }
 
     table.appendChild(createTbody);
+    
 }
 
 function removecategory(){
-
-}
-function editCategory(){
-
 }
 
 function addNewCategory() {
-  
 }
 
 
 function onCancelButton(event) {
-
 }
 
-function onAddButton(event) {
-    
+function onAddButton(event) {  
 }
 
 
-function clearForm() {
-    
+function clearForm() { 
 }
 
 
 let table = document.getElementById("table");
 let buttonAdd = document.getElementById("btn-add");
 let CancelBtn = document.getElementById("btn-cancel");
-
+// console.log(table)
 buttonAdd.addEventListener('click', addNewCategory);
 CancelBtn.addEventListener('click', onCancelButton);
-
+// console.log(CancelBtn)
 let inputCategoryId = document.getElementById('id');
-let inputCategoryName = document.getElementById('name');
+let inputCategoryName = document.getElementById('cateName');
 let inputCategoryQuan = document.getElementById('quan');
 let inputCategoryAction = document.getElementById('action');
+// console.log(inputCategoryId, inputCategoryName, inputCategoryQuan,inputCategoryAction);
 
-renderCategory();
+// renderCategory();
 
