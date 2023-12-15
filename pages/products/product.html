@@ -48,7 +48,72 @@
                 </menu>
             </form>
         </div>
-    
+
+        <div id="view-product" style="display: none">
+            <form open>
+                <head>
+                    <h3 id="detail">Show product detail</h3>
+                </head>
+                <div class="group-form">
+                    <section>
+                        <div class="list-product">
+                            <div class="list-card">
+                                <span class="material-symbols-outlined">badge</span>
+                                <h4>Name</h4>
+                                <span id="name-tail"></span>
+                            </div>
+                            <div class="list-card">
+                                <span class="material-symbols-outlined">category</span>
+                                <h4>Category</h4>
+                                <span id="category-tail"></span>
+                            </div>
+                            <div class="list-card">
+                                <span class="material-symbols-outlined">production_quantity_limits</span>
+                                <h4>Old Quantity </h4>
+                                <span id="quan-tail"></span>
+                            </div>
+                            <div class="list-card">
+                                <span class="material-symbols-outlined">stockpot</span>
+                                <h4>Instock</h4>
+                                <span id="stock-tail"></span>
+                            </div>
+                            <div class="list-card">
+                                <span class="material-symbols-outlined"> payments</span>
+                                <h4>Net Price</h4>
+                                <span id="nprice-tail"></span>
+                            </div>
+
+                            <div class="list-card">
+                                <span class="material-symbols-outlined">currency_exchange</span>
+                                <h4>Gross Price</h4>
+                                <span id="gprice-tail"></span>
+                            </div>
+                            <div class="list-card">
+                                <h4>Last sold out</h4>
+                                <div class="group-span">
+                                    <span class="date">
+                                        <h5>: Date</h5>
+                                        <span></span>
+                                    </span>
+                                    <div class="date">
+                                        <h5>: Amount </h5>
+                                    </div>
+                                    <div class="date">
+                                        <h5>: Price </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <footer>
+                        <h2 class="total-sold">TOTAL SOLD OUT </h2>
+                        <div id="card-total"><h1 id="total-sold">0</h1></div>
+                        <button class="exit">Exit</button>
+                    </footer>
+                </div>
+            </form>
+        </div>
+
         <main>
             <div class="main-header"></div>
             <div class="main-content">
