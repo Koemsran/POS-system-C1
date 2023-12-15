@@ -12,18 +12,11 @@
 }
 
 .navbar {
-    flex: 1;
+    flex: 0.5;
     background-color: black;
     justify-content: center;
     align-items: center;
     border-radius: 0px 50px 50px 0px;
-}
-
-.navbar .bg-logo {
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    border-radius: 150px 150px 150px 10px;
 }
 
 .navbar .icon {
@@ -55,34 +48,26 @@ main {
 }
 
 .main-header {
-    background-color: teal;
+    width: 100%;
+    background-color: white;
     flex: 1;
     display: flex;
     align-items: center;
     padding-left: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.bg-logo img{
+    width: 30%;
 }
 
-.main-header .search-bar {
-
-    width: 45%;
-    display: flex;
-    gap: 10px;
-    padding: 7px;
-    background-color: white;
-    border-radius: 20px 0px 20px 0px;
-}
-
-.search-bar #find-product {
-    border: none;
-}
 
 .main-content {
     flex: 8;
+    display: flex;
 
 }
 
 .card-grid {
-    /* margin-top: 10px; */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -106,10 +91,6 @@ h3 {
     padding: 25px;
 }
 
-.sidebar {
-    flex: 12.50;
-    background-color: gainsboro;
-}
 
 table {
     border-collapse: collapse;
