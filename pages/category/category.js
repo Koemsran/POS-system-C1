@@ -57,11 +57,8 @@ let table = document.getElementById("table");
 let buttonAdd = document.getElementById("btn-add");
 let CancelBtn = document.getElementById("btn-cancel");
 
-
 buttonAdd.addEventListener('click', addNewCategory);
 CancelBtn.addEventListener('click', onCancelButton);
-addCategory.addEventListener('click', onAddButton);
-
 
 let inputCategoryId = document.getElementById('id');
 let inputCategoryName = document.getElementById('name');
