@@ -11,7 +11,7 @@
     <script src="home.js" defer></script>
 </head>
 
-<body>  
+<body>
     <div class="container">
         <nav class="navbar">
             <div class="bg-logo">
@@ -19,12 +19,9 @@
             </div>
             <div class="icon">
                 <a href="#"><span class="active material-symbols-outlined">house</span></a>
-                <a href="../products/product.html"><span class="shop material-symbols-outlined">shopping_cart </span></a>
+                <a href="../products/product.html"><span class="shop material-symbols-outlined">shopping_cart</span></a>
                 <a href="../category/category.html"><span class="material-symbols-outlined">tune</span></a>
                 <a href="../order/order.html"><span class="material-symbols-outlined">shopping_cart_checkout </span></a>
-                   
-                    
-                
             </div>
         </nav>
         <main>
@@ -33,26 +30,55 @@
                     <span class="search material-symbols-outlined">search</span>
                     <input type="text" id="find-product" placeholder="Search product here.....">
                 </div>
-
-
             </div>
             <div class="main-content">
-                <table>
-                    <caption>Top 3 sold products</caption>
-                    <thead>
-                        <tr>
-                            <th>Product ID</th>
-                            <th>Product Name</th>
-                            <th>Category</th>
-                            <th>Price</th>
-                            <th>Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+                <div class="card-grid">
+                    <h3>Instrock</h3>
+                    <div class="card">
+                        <span class="material-symbols-outlined"> place_item</span>
+                        <!-- <p>Total in stock product  </p> -->
+                        <div class="card-content"></div>
+                    </div>
+                    <h3>Category</h3>
+                    <div class="card">
+                        <span class="material-symbols-outlined">category</span>
+                        <!-- <p>Total in stock product  </p> -->
+                        <div class="card-content"> </div>
+                    </div>
+                    <h3>Sold out</h3>
+                    <div class="card">
+                        <span class="material-symbols-outlined">sell</span>
+                        <!-- <p>Total in stock product  </p> -->
+                        <div class="card-content"></div>
+                    </div>
+                    <h3>Income</h3>
+                    <div class="card">
+                        <span class="material-symbols-outlined">monetization_on</span>
+                        <!-- <p>Total in stock product  </p> -->
+                        <div class="card-content"></div>
+                    </div>
+                </div>
             </div>
         </main>
-        <div class="sidebar"></div>
+        <div class="sidebar">
+            <table>
+                <caption>Top 3 sold products</caption>
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Amount</th>
+                        <th>Sell Progress</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 
