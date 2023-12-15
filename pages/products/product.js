@@ -7,21 +7,13 @@ let dataStore = {
     latestId: null
 }
 
-
+let editIndex = null
 
 //=================> FUNCTION <==================
 
 let loadProduct = laodData("dataStore");
 if (loadProduct != undefined) {
     dataStore = loadProduct
-}
-
-function getTotal() {
-    let totalPrice = 0
-    for (let product of productsData.products) {
-        totalPrice += parseInt(product.price) * parseInt(product.quantity);
-    }
-    total.textContent = totalPrice + "$"
 }
 
 
@@ -31,13 +23,14 @@ function renderProduct() {
     let newTbody = createElement('tbody');
     let totalPrice = 0;
     let totalQuantity = 0;
+    let index = 0
     for (let listProduct of dataStore.products) {
 
         let tRow = createElement('tr');
-
+        tRow.dataset.index = index;
+        index++
         let tdId = createElement('td');
         tdId.textContent = "00" + listProduct.id;
-
 
         let tdName = createElement('td');
         tdName.textContent = listProduct.name;
@@ -111,8 +104,11 @@ function renderProduct() {
 
 }
 
+
 function addProduct() {
     show(addInput)
+    title.textContent = 'Add product more'
+    btn.textContent = "Add";
     categorySelect()
     clearForm()
 
@@ -127,6 +123,7 @@ function onCancel(event) {
 function onAdd(event) {
     event.preventDefault()
 
+    // if (inputName.value === '' || inputCategory.value === '' || inputQuan.value === '' || inputNetPrice.value === '' || inputGrossPrice.value === '') return alert('Form is empty cannot add!');
     let proId = dataStore.latestId;
     if (proId === null || dataStore.products.length === 0) {
         proId = 1;
@@ -134,19 +131,29 @@ function onAdd(event) {
         proId = proId + 1;
     }
 
-    dataStore.latestId = proId;
-
-    dataStore.products.push({
+    let newProduct = {
         id: proId,
         name: inputName.value,
         category: inputCategory.value,
         quantity: inputQuan.value,
         netprice: inputNetPrice.value,
         grossprice: inputGrossPrice.value,
-    })
-    saveData('dataStore', dataStore)
+    }
 
-    window.location.reload();
+    dataStore.latestId = proId;
+
+    if (editIndex === null) {
+        dataStore.products.push(newProduct)
+
+    }
+    else {
+        dataStore.products[editIndex] = newProduct;
+    }
+    editIndex = null;
+    saveData('dataStore', dataStore)
+    clearForm()
+    renderProduct()
+    window.location.reload()
 
 
 }
@@ -181,6 +188,8 @@ function categorySelect() {
         select.appendChild(option)
 
     }
+
+
 
 }
 
@@ -232,37 +241,98 @@ function clearFilter() {
 
 function removeElement(event) {
     let indexTr = event.target.closest('tr');
-    let quanlity = indexTr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.value;
-
+    // let quanlity = indexTr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.value;
+    let productId = indexTr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.dataset.id;
     let isRemove = window.confirm('Do you want to delete all products?');
+
     if (isRemove) {
-        indexTr.remove();
-    } else {
-        let productId = indexTr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.dataset.id;
+        indexTr.remove()
         let productIndex = dataStore.products.findIndex(product => product.id === parseInt(productId));
-        dataStore.products[productIndex].quantity = quanlity - 1;
+
+        dataStore.products.splice(productIndex, 1);
         saveData('dataStore', dataStore)
-        window.location.reload()
-        renderProduct()
+        console.log(productIndex)
+
     }
 
 
+    // else {
+
+    //     let productIndex = dataStore.products.findIndex(product => product.id === parseInt(productId));
+    //     dataStore.products[productIndex].quantity = quanlity - 1;
+    //     saveData('dataStore', dataStore)
+    //     window.location.reload()
+    //     renderProduct()
+    // }
+
+}
+
+function editElement(event) {
+
+    let index = event.target.closest('tr').dataset.index;
+    let product = dataStore.products[index];
+    categorySelect()
+    show(addInput)
+    title.textContent = 'Update your product'
+    btn.textContent = "Update";
+
+    inputName.value = product.name;
+    inputCategory.value = product.category;
+    inputQuan.value = product.quantity;
+    inputNetPrice.value = product.netprice;
+    inputGrossPrice.value = product.grossprice;
+    editIndex = index;
+
+
+}
+
+function viewElement(event) {
+    show(viewProductDetail)
+    let index = event.target.closest('tr').dataset.index;
+    let product = dataStore.products[index];
+
+    let name = getElement('#name-tail');
+    let cat = getElement('#category-tail');
+    let quan = getElement('#quan-tail');
+    let stock = getElement('#stock-tail');
+    let nPrice = getElement('#nprice-tail');
+    let gPrice = getElement('#gprice-tail');
+
+    name.textContent = ": " + product.name;
+    cat.textContent = ": " + product.category;
+    quan.textContent = ": " + product.quantity;
+    stock.textContent = ": " + product.quantity;
+    nPrice.textContent = ": " + product.netprice + "$";
+    gPrice.textContent = ": " + product.grossprice + "$";
 
 
 
 }
+
 function getBtn(tbody) {
     let btnRemove = tbody.lastElementChild.lastElementChild.lastElementChild.lastElementChild;
+    let btnEdit = tbody.lastElementChild.lastElementChild.lastElementChild.firstElementChild.nextElementSibling;
+    let btnView = tbody.lastElementChild.lastElementChild.lastElementChild.firstElementChild;
     btnRemove.addEventListener('click', removeElement)
+    btnEdit.addEventListener('click', editElement)
+    btnView.addEventListener('click', viewElement)
 }
+function exitDetail() {
+    hide(viewProductDetail)
 
+}
 //===============> MAIN ADD PRODUCT FORM <====================
 let table = getElement('table')
 let tbody = getElement('tbody');
 let btnAdd = getElement('.btn-add');
 let addInput = getElement('#add-product')
+let viewProductDetail = getElement('#view-product');
+
 let add = getElement('#btn-add');
 let cancel = getElement('#btn-cancel');
+let title = getElement('header h1');
+let btn = getElement('#btn-add');
+let btnExit = getElement('.exit');
 
 // ======================> TOTAL <=======================
 let total = getElement('.total');
@@ -282,10 +352,6 @@ let btnClearFilter = getElement('.fillter button');
 //===============> SEARCH PRODUCT <=====================
 let search = getElement('#search');
 
-//===================> REMOVE FEATURE <====================
-let btnRemove = table.lastElementChild;
-
-
 // ================> ADD EVENTLISTENER <==================
 btnAdd.addEventListener('click', addProduct);
 add.addEventListener('click', onAdd);
@@ -293,8 +359,9 @@ cancel.addEventListener('click', onCancel);
 search.addEventListener('keyup', searchBar)
 fill.addEventListener('change', filterData)
 btnClearFilter.addEventListener('click', clearFilter)
-
+btnExit.addEventListener('click', exitDetail)
 
 // ==============> CALL FUNTION HERE <==================
 categoryfillter()
 renderProduct()
+reloadData()
