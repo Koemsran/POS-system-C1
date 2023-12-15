@@ -7,7 +7,7 @@ let dataStore = {
     latestId: null
 }
 
-
+let editIndex = null
 
 //=================> FUNCTION <==================
 
@@ -31,13 +31,14 @@ function renderProduct() {
     let newTbody = createElement('tbody');
     let totalPrice = 0;
     let totalQuantity = 0;
+    let index = 0
     for (let listProduct of dataStore.products) {
 
         let tRow = createElement('tr');
-
+        tRow.dataset.index = index;
+        index++
         let tdId = createElement('td');
         tdId.textContent = "00" + listProduct.id;
-
 
         let tdName = createElement('td');
         tdName.textContent = listProduct.name;
@@ -113,6 +114,8 @@ function renderProduct() {
 
 function addProduct() {
     show(addInput)
+    title.textContent = 'Add product more'
+    btn.textContent = "Add";
     categorySelect()
     clearForm()
 
@@ -126,7 +129,7 @@ function onCancel(event) {
 
 function onAdd(event) {
     event.preventDefault()
-    
+
     if (inputName.value === '' || inputCategory.value === '' || inputQuan.value === '' || inputNetPrice.value === '' || inputGrossPrice.value === '') return alert('Form is empty cannot add!');
     let proId = dataStore.latestId;
     if (proId === null || dataStore.products.length === 0) {
@@ -134,19 +137,30 @@ function onAdd(event) {
     } else {
         proId = proId + 1;
     }
-
     dataStore.latestId = proId;
+    let newProduct = 
 
-    dataStore.products.push({
-        id: proId,
-        name: inputName.value,
-        category: inputCategory.value,
-        quantity: inputQuan.value,
-        netprice: inputNetPrice.value,
-        grossprice: inputGrossPrice.value,
-    })
+    if (editIndex === null) {
+        dataStore.products.push({
+            id: proId,
+            name: inputName.value,
+            category: inputCategory.value,
+            quantity: inputQuan.value,
+            netprice: inputNetPrice.value,
+            grossprice: inputGrossPrice.value,
+        })
+    }
+    else{
+        dataStore.products[editIndex]={
+            id: proId,
+            name: inputName.value,
+            category: inputCategory.value,
+            quantity: inputQuan.value,
+            netprice: inputNetPrice.value,
+            grossprice: inputGrossPrice.value,
+        }
+    }
     saveData('dataStore', dataStore)
-
     window.location.reload();
 
 
@@ -239,7 +253,7 @@ function removeElement(event) {
 
     if (isRemove) {
         indexTr.remove()
-        
+
         let productIndex = dataStore.products.findIndex(product => product.id === parseInt(productId));
         dataStore.products.splice(1, productIndex);
         saveData('dataStore', dataStore)
@@ -259,15 +273,28 @@ function removeElement(event) {
 
 }
 
-function viewElement(event){
-    let indexTr = event.target.closest('tr');
-    show()
+
+function viewElement(event) {
+    let index = event.target.closest('tr').dataset.index;
+    let product = dataStore.products[index];
+    console.log(product)
+
+    show(addInput)
+    title.textContent = 'Update your product'
+    btn.textContent = "Update";
+
+    inputName.value = product.name;
+    inputCategory.value = product.category;
+    inputQuan.value = product.quantity;
+    inputNetPrice.value = product.netprice;
+    inputGrossPrice.value = product.grossprice;
+    editIndex = index;
 
 }
 
 function getBtn(tbody) {
     let btnRemove = tbody.lastElementChild.lastElementChild.lastElementChild.lastElementChild;
-    let btnView = tbody.lastElementChild.lastElementChild.lastElementChild.lastElementChild;
+    let btnView = tbody.lastElementChild.lastElementChild.lastElementChild;
     btnRemove.addEventListener('click', removeElement)
     btnView.addEventListener('click', viewElement)
 }
@@ -280,6 +307,8 @@ let addInput = getElement('#add-product')
 let add = getElement('#btn-add');
 let cancel = getElement('#btn-cancel');
 
+let title = getElement('header h1');
+let btn = getElement('#btn-add');
 // ======================> TOTAL <=======================
 let total = getElement('.total');
 let totalQuant = getElement('.total-quan');
