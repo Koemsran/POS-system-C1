@@ -1,10 +1,8 @@
 
-
 // Function to render categories
 function renderCategory() {
     let createTbody = document.createElement('tbody');
 
-    
     for (let listCategory of category) {
         let tdRow = document.createElement('tr');
 
@@ -31,6 +29,12 @@ function renderCategory() {
     table.appendChild(createTbody);
 }
 
+function removecategory(){
+
+}
+function editCategory(){
+
+}
 
 function addNewCategory() {
   
@@ -38,13 +42,11 @@ function addNewCategory() {
 
 
 function onCancelButton(event) {
-    event.preventDefault(); 
-    addCategory.style.display = 'none'; 
+
 }
 
 function onAddButton(event) {
-    event.preventDefault(); 
-    addCategory.style.display = 'block'; 
+    
 }
 
 
@@ -57,15 +59,13 @@ let table = document.getElementById("table");
 let buttonAdd = document.getElementById("btn-add");
 let CancelBtn = document.getElementById("btn-cancel");
 
-
 buttonAdd.addEventListener('click', addNewCategory);
 CancelBtn.addEventListener('click', onCancelButton);
-addCategory.addEventListener('click', onAddButton);
-
 
 let inputCategoryId = document.getElementById('id');
 let inputCategoryName = document.getElementById('name');
 let inputCategoryQuan = document.getElementById('quan');
 let inputCategoryAction = document.getElementById('action');
 
-renderCategory(); 
+renderCategory();
+
