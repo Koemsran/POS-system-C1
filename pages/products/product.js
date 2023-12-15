@@ -99,7 +99,7 @@ function renderProduct() {
 
     total.textContent = parseInt(totalPrice) + '$'
     totalQuant.textContent = parseInt(totalQuantity)
-    
+
 
 
 }
@@ -154,7 +154,7 @@ function onAdd(event) {
     clearForm()
     renderProduct()
     window.location.reload()
-    
+
 
 }
 
@@ -188,6 +188,7 @@ function categorySelect() {
         select.appendChild(option)
 
     }
+
 
 
 }
@@ -239,7 +240,6 @@ function clearFilter() {
 }
 
 function removeElement(event) {
-
     let indexTr = event.target.closest('tr');
     // let quanlity = indexTr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.value;
     let productId = indexTr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.dataset.id;
@@ -248,13 +248,13 @@ function removeElement(event) {
     if (isRemove) {
         indexTr.remove()
         let productIndex = dataStore.products.findIndex(product => product.id === parseInt(productId));
-        dataStore.products.splice(1, productIndex);
+
+        dataStore.products.splice(productIndex, 1);
         saveData('dataStore', dataStore)
-        renderProduct()
-        window.location.reload()
+        console.log(productIndex)
 
     }
-    
+
 
     // else {
 
@@ -268,6 +268,7 @@ function removeElement(event) {
 }
 
 function editElement(event) {
+
     let index = event.target.closest('tr').dataset.index;
     let product = dataStore.products[index];
     categorySelect()
@@ -281,11 +282,11 @@ function editElement(event) {
     inputNetPrice.value = product.netprice;
     inputGrossPrice.value = product.grossprice;
     editIndex = index;
-    
+
 
 }
 
-function viewElement(event){
+function viewElement(event) {
     show(viewProductDetail)
     let index = event.target.closest('tr').dataset.index;
     let product = dataStore.products[index];
@@ -295,16 +296,16 @@ function viewElement(event){
     let quan = getElement('#quan-tail');
     let stock = getElement('#stock-tail');
     let nPrice = getElement('#nprice-tail');
-    let gPrice = getElement('#gprice-tail'); 
+    let gPrice = getElement('#gprice-tail');
 
-    name.textContent = ": "+product.name;
-    cat.textContent = ": "+product.category;
-    quan.textContent = ": "+product.quantity;
-    stock.textContent = ": "+product.quantity;
-    nPrice.textContent = ": "+product.netprice + "$";
-    gPrice.textContent = ": "+product.grossprice + "$";
+    name.textContent = ": " + product.name;
+    cat.textContent = ": " + product.category;
+    quan.textContent = ": " + product.quantity;
+    stock.textContent = ": " + product.quantity;
+    nPrice.textContent = ": " + product.netprice + "$";
+    gPrice.textContent = ": " + product.grossprice + "$";
 
-    
+
 
 }
 
@@ -316,9 +317,9 @@ function getBtn(tbody) {
     btnEdit.addEventListener('click', editElement)
     btnView.addEventListener('click', viewElement)
 }
-function exitDetail(){
+function exitDetail() {
     hide(viewProductDetail)
-    
+
 }
 //===============> MAIN ADD PRODUCT FORM <====================
 let table = getElement('table')
@@ -363,3 +364,4 @@ btnExit.addEventListener('click', exitDetail)
 // ==============> CALL FUNTION HERE <==================
 categoryfillter()
 renderProduct()
+reloadData()
