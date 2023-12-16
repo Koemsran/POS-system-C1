@@ -68,19 +68,6 @@ main {
     
 
 }
-.main-header .search-bar {
-
-    width: 25%;
-    display: flex;
-    gap: 10px;
-    padding: 7px;
-    background-color: white;
-    border-radius: 20px 0px 20px 0px;
-}
-
-.search-bar #find-product {
-    border: none;
-}
 
 .main-content {
     flex: 8;
