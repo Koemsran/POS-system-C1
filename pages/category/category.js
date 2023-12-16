@@ -19,12 +19,6 @@ function renderCategory() {
         let action = createElement('div');
         action.className = 'btn-action';
 
-        let btnView = createElement('div');
-        let iconView = createElement("span");
-        iconView.className = 'view material-symbols-outlined';
-        iconView.textContent = "visibility"
-        btnView.appendChild(iconView)
-        action.appendChild(btnView)
 
         let btnEdit = createElement('div');
         let iconEdit = createElement("span");
@@ -87,23 +81,40 @@ function onCancel() {
     hide(addInput)
 }
 
+function searchBar() {
+    let tRow = getElements('tbody tr');
+    let input = searchBtn.value.toUpperCase();
+    for (let td of tRow) {
+        let td1 = td.firstElementChild.nextElementSibling.textContent.toUpperCase();
+        if (td1.includes(input)) {
+            td.style.display = '';
+
+        } else {
+            hide(td)
+        }
+    }
+}
 //==================> TABLE <=================
 let tbody = getElement("tbody");
 let table = getElement('table')
+
 //=================> GRT VALUE FROM INPUT <=====================
 let inputName = getElement('.g-name input');
 let description = getElement('.Description textarea')
 let dataStore = laodData('dataStore');
+
 // ===============> GET BUTTON HERE <====================
 let add = getElement('#btn-add');
 let cancel = getElement('#btn-cancel');
 let btnAdd = getElement(".add-category button");
-let addInput = getElement('#add-category')
+let addInput = getElement('#add-category');
+let searchBtn= getElement('.search-button input')
 
 //====================> ADD EVENLISTENER <====================
 btnAdd.addEventListener("click", addCategory);
 add.addEventListener('click', onAdd);
 cancel.addEventListener('click', onCancel);
+searchBtn.addEventListener('keyup', searchBar)
 
 //=============> CALL FUNCTION HERE <=================
 
