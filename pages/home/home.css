@@ -54,6 +54,7 @@ main {
     display: flex;
     align-items: center;
     padding-left: 10px;
+    padding: 5px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 .bg-logo img{
@@ -64,27 +65,48 @@ main {
 .main-content {
     flex: 8;
     display: flex;
+    gap: 50px;
+    padding: 50px;
 
 }
 
 .card-grid {
     display: flex;
+    flex: 0.5;
     flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
     justify-content: space-between;
-    margin: 40px;
+    
 }
 
-h3 {
-    margin-left: 40px;
+.card h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: -20px;
+    margin-left: 30px;
+    background-color: teal;
+    width: 60%;
+    padding: 7px;
+    color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    
 }
 
 .card {
-    width: 80%;
-    height: 60px;
-    margin: 7px;
-    border: 2px solid #ccc;
+    width: 45%;
+    height: 30vh;
+    border: 3px double teal;
     border-radius: 10px;
-    margin-left: 40px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+}
+.card h1{
+    text-align: center;
+    color: teal;
+    font-size: 40px;
 }
 
 .card-content {
@@ -98,6 +120,7 @@ table {
     font-size: 13px;
     margin: auto;
     margin-top: 20px;
+    flex: 4px;
 }
 
 caption {
