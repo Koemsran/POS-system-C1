@@ -80,6 +80,7 @@ function onAdd(event) {
     saveData('dataStore', dataStore)
     console.log(dataStore)
     hide(addInput)
+    window.location.reload()
 }
 
 function onCancel() {
