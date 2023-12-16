@@ -87,6 +87,12 @@ function onCancel() {
     hide(addInput)
 }
 
+function onSave() {
+
+
+
+}
+
 //==================> TABLE <=================
 let tbody = getElement("tbody");
 let table = getElement('table')
@@ -108,3 +114,5 @@ cancel.addEventListener('click', onCancel);
 //=============> CALL FUNCTION HERE <=================
 
 renderCategory(); 
+
+

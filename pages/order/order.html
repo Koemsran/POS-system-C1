@@ -16,7 +16,8 @@
         <nav class="navbar">
             <div class="icon">
                 <a href="../home/home.html"><span class="material-symbols-outlined">house</span></a>
-                <a href="../products/product.html"><span class="shop material-symbols-outlined">shopping_cart </span></a>
+                <a href="../products/product.html"><span class="shop material-symbols-outlined">shopping_cart
+                    </span></a>
                 <a href="../category/category.html"><span class="material-symbols-outlined">tune</span></a>
                 <a href="#"><span class="active material-symbols-outlined">shopping_cart_checkout</span></a>
 
@@ -34,25 +35,22 @@
 
                 <div class="sidebarleft">
                     <div id="search-bar">
-                        <input type="number" id="search" placeholder="Input ID">
+                        <input type="number" id="search" placeholder="Input ID"> 
                     </div>
-                    <table class="tb">
-                        <thead>
-                            <tr>
-                                <th class="col" colspan="5"></th>
-                            </tr>
-                            <tr id="tr-col">
-                                <th>Product ID</th>
-                                <th>Product Name</th>
-                                <th>Category</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
+                    <table>
+                        <tr>
+                            <th class="search-pro"></th>
+                        </tr>
+                        <tr>
+                            <th id="qty"> QTY : </th>
+                        </tr>
+                        <tr>
+                            <th id="price-pro"> $ </th>
+                        </tr>
                     </table>
-                    <button class="btn">Check Out</button>
+                    <div class="checkout">
+                        <button class="btn">Checkout Product</button>
+                    </div>
                 </div>
                 <div class="sidebar">
                     <table>
@@ -68,13 +66,11 @@
                                 <th>Price</th>
                             </tr>
                         </thead>
-                        <tbody>
-
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                     <div class="output">
                         <h3><span>Total product: </span><span class="total-quan"></span></h3>
-                        <button>Check Out</button>
+                        <button>Checkout</button>
                     </div>
                 </div>
             </div>

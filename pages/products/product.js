@@ -365,3 +365,6 @@ btnExit.addEventListener('click', exitDetail)
 // ==============> CALL FUNTION HERE <==================
 categoryfillter()
 renderProduct()
+
+
+
