@@ -71,33 +71,44 @@ main {
 
 .main-content {
     flex: 8;
-   
+
 }
 
-.card-grid {
-    /* margin-top: 10px; */
+.text {
+    height: 5vh;
+    width: 50%;
+    margin-left: 40px;
+    border: #8B4513;
+    font-weight: bold;
+    margin-bottom:-50px;
+}
+.text:hover {
+    background-color:#8B4513;
+}
+
+.main-content {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 40px;
+    flex-direction: row;
+    width: 50%;
+    gap: 40%;
+    padding: 30px;
 }
 
-h3 {
-    margin-left: 40px;
+.card2 {
+    margin-top: 30px;
 }
 
-.card {
-    width: 80%;
-    height: 60px;
-    margin: 7px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    margin-left: 40px;
+#card-total {
+    border: 7px double teal;
+    padding: 65px;
 }
 
-.card-content {
-    padding: 25px;
+#total-sold {
+    font-size: 40px;
+    color: teal;
+
 }
+
 .sidebar {
     flex: 12.50;
     background-color: gainsboro;
@@ -109,6 +120,7 @@ table {
     font-size: 13px;
     margin: auto;
     margin-top: 20px;
+    background-color: #8B4513;
 }
 
 caption {
