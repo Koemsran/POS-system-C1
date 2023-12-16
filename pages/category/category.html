@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>category</title>
-    <script src="category/category.js" defer></script>
-    <link rel="stylesheet" href="category.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Product</title>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="category.css">
+    <script type="module" src="category.js" defer></script>
+    <script type="module" src="../../js/locialstorage.js" defer></script>
 </head>
 
 <body>
@@ -17,10 +17,11 @@
         <nav class="navbar">
             <div class="icon">
                 <a href="../home/home.html"><span class="material-symbols-outlined">house</span></a>
-                <a href="../products/product.html"><span class="shop material-symbols-outlined">shopping_cart </span></a>
+                <a href="../products/product.html"><span class="shop material-symbols-outlined">shopping_cart
+                    </span></a>
                 <a href="#"><span class="active material-symbols-outlined">tune</span></a>
                 <a href="../order/order.html"><span class=" material-symbols-outlined">shopping_cart_checkout</span></a>
-                    
+
             </div>
         </nav>
         <div id="add-category" style="display: none">
@@ -29,14 +30,20 @@
                     <h1>Add category more</h1>
                 </header>
                 <section>
-                    <input id="id" type="number" placeholder="ID">
-                    <input id="cateName" type="number" placeholder=" Category name" />
-                    <input id="quan" type="number" placeholder="Quantity" />
-                    <input id="action" type="number" placeholder="Action">
+                    <div class="g-name">
+                        <label for="">Category Name : </label>
+                        <input type="text" id="cateName"  />
+                    </div>
+                    
+                    <div class="Description">
+                        <label for="">Description : </label>
+                        <textarea name="des" id="descript" cols="90" rows="5"></textarea>
+                    </div>
+
                 </section>
                 <menu>
                     <button id="btn-cancel">Cancel</button>
-                    <button id="btn-add">Add</button>
+                    <button id="btn-add">Save</button>
                 </menu>
             </form>
         </div>

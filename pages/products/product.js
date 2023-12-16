@@ -123,7 +123,7 @@ function onCancel(event) {
 function onAdd(event) {
     event.preventDefault()
 
-    // if (inputName.value === '' || inputCategory.value === '' || inputQuan.value === '' || inputNetPrice.value === '' || inputGrossPrice.value === '') return alert('Form is empty cannot add!');
+    if (inputName.value === '' || inputCategory.value === '' || inputQuan.value === '' || inputNetPrice.value === '' || inputGrossPrice.value === '') return alert('Form is empty cannot add!');
     let proId = dataStore.latestId;
     if (proId === null || dataStore.products.length === 0) {
         proId = 1;
@@ -364,4 +364,3 @@ btnExit.addEventListener('click', exitDetail)
 // ==============> CALL FUNTION HERE <==================
 categoryfillter()
 renderProduct()
-reloadData()
