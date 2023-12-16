@@ -8,17 +8,32 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="home.css">
-    <script src="home.js" defer></script>
+    <script type="module" src="home.js" defer></script>
+    <script type="module" src="../../js/locialstorage.js" defer></script>
 </head>
 
 <body>
     <div class="container">
         <nav class="navbar">
             <div class="icon">
-                <a href="#"><span class="active material-symbols-outlined">house</span></a>
-                <a href="../products/product.html"><span class="shop material-symbols-outlined">shopping_cart</span></a>
-                <a href="../category/category.html"><span class="material-symbols-outlined">tune</span></a>
-                <a href="../order/order.html"><span class="material-symbols-outlined">shopping_cart_checkout </span></a>
+                <a href="#" class="active">
+                    <span class="material-symbols-outlined">house</span>
+                    <p>Home</p>
+                </a>
+                <a href="../products/product.html">
+                    <span class="shop material-symbols-outlined">shopping_cart </span>
+                    <p>Product</p>
+                </a>
+                <a href="../category/category.html">
+                    <span class="material-symbols-outlined">tune</span>
+                    <p>Category</p>
+                </a>
+                <a href="../order/order.html">
+                    <span class=" material-symbols-outlined">shopping_cart_checkout</span>
+                    <p>Order</p>
+                </a>
+
+
             </div>
         </nav>
         <main>
@@ -33,29 +48,30 @@
                         <!-- <span class="material-symbols-outlined"> place_item</span> -->
                         <h3>Instrock</h3>
                         <div class="card-content"></div>
-                        <h1>0</h1>
+                        <h1 id="c1">0</h1>
                     </div>
-                    
+
                     <div class="card">
                         <h3>Category</h3>
                         <!-- <span class="material-symbols-outlined">category</span> -->
                         <div class="card-content"> </div>
-                        <h1>0</h1>
+                        <h1 id="c2">0</h1>
                     </div>
-                    
+
                     <div class="card">
                         <h3>Sold out</h3>
                         <!-- <span class="material-symbols-outlined">sell</span> -->
                         <div class="card-content"></div>
-                        <h1>0</h1>
+                        <h1 id="c3">0</h1>
                     </div>
 
                     <div class="card">
                         <h3>Income</h3>
                         <!-- <span class="material-symbols-outlined">monetization_on</span> -->
                         <div class="card-content"></div>
-                        <h1>0</h1>
+                        <h1 id="c4">0</h1>
                     </div>
+
                 </div>
                 <table>
                     <caption>Top 3 sold products</caption>
