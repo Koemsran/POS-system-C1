@@ -21,13 +21,6 @@ function renderCategory() {
         let action = createElement('div');
         action.className = 'btn-action';
 
-        let btnView = createElement('div');
-        let iconView = createElement("span");
-        iconView.className = 'view material-symbols-outlined';
-        iconView.textContent = "visibility"
-        btnView.appendChild(iconView)
-        action.appendChild(btnView)
-
         let btnEdit = createElement('div');
         let iconEdit = createElement("span");
         iconEdit.className = 'edit material-symbols-outlined';
@@ -139,11 +132,24 @@ function clearForm(){
 function getBtn(tbody) {
 
     let btnRemove = tbody.lastElementChild.lastElementChild.lastElementChild.lastElementChild;
-    let btnEdit = tbody.lastElementChild.lastElementChild.lastElementChild.firstElementChild.nextElementSibling;
-    // let btnView = tbody.lastElementChild.lastElementChild.lastElementChild.firstElementChild;
+    let btnEdit = tbody.lastElementChild.lastElementChild.lastElementChild.firstElementChild;
     btnRemove.addEventListener('click', removeElement)
     btnEdit.addEventListener('click', editElement)
-    // btnView.addEventListener('click', viewElement)
+}
+
+
+function searchBar() {
+    let tRow = getElements('tbody tr');
+    let input = searchBtn.value.toUpperCase();
+    for (let td of tRow) {
+        let td1 = td.firstElementChild.nextElementSibling.textContent.toUpperCase();
+        if (td1.includes(input)) {
+            td.style.display = '';
+
+        } else {
+            hide(td)
+        }
+    }
 }
 
 //==================> TABLE <=================
@@ -161,11 +167,13 @@ let add = getElement('#btn-add');
 let cancel = getElement('#btn-cancel');
 let btnAdd = getElement(".add-category button");
 let addInput = getElement('#add-category');
+let searchBtn= getElement('.search-button input')
 
 //====================> ADD EVENLISTENER <====================
 btnAdd.addEventListener("click", addCategory);
 add.addEventListener('click', onAdd);
 cancel.addEventListener('click', onCancel);
+searchBtn.addEventListener('keyup', searchBar)
 
 //=============> CALL FUNCTION HERE <=================
 

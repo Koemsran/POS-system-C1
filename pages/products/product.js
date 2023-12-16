@@ -240,28 +240,16 @@ function clearFilter() {
 
 function removeElement(event) {
     let indexTr = event.target.closest('tr');
-    // let quanlity = indexTr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.value;
     let productId = indexTr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.dataset.id;
     let isRemove = window.confirm('Do you want to delete all products?');
 
     if (isRemove) {
         indexTr.remove()
         let productIndex = dataStore.products.findIndex(product => product.id === parseInt(productId));
- 
         dataStore.products.splice(productIndex, 1);
         saveData('dataStore', dataStore)
 
     }
-
-
-    // else {
-
-    //     let productIndex = dataStore.products.findIndex(product => product.id === parseInt(productId));
-    //     dataStore.products[productIndex].quantity = quanlity - 1;
-    //     saveData('dataStore', dataStore)
-    //     window.location.reload()
-    //     renderProduct()
-    // }
 
 }
 

@@ -133,6 +133,7 @@ main {
 .search-button input {
     padding: 11px;
     border-radius: 5px;
+    border: 1px solid rgb(199, 195, 195);
 }
 
 .search-button span {
