@@ -176,6 +176,13 @@ tbody tr td {
     border-right: none;
 }
 
+tbody tr td {
+    padding: 10px;
+    border-left: none;
+    border-right: none;
+
+}
+
 
 /* ......add category... */
 #add-category {

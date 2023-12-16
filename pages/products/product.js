@@ -3,8 +3,9 @@ import { getElement, getElements, saveData, laodData, createElement, show, hide 
 // ================> Global varibles <===================
 let dataStore = {
     products: [],
-    categories: ["perfumes", "lotion", "shambo"],
-    latestId: null
+    categories: [{Id:1, name: 'perfume'}],
+    latestIdP: null,
+    latestIdC: 1,
 }
 
 let editIndex = null
@@ -124,7 +125,7 @@ function onAdd(event) {
     event.preventDefault()
 
     if (inputName.value === '' || inputCategory.value === '' || inputQuan.value === '' || inputNetPrice.value === '' || inputGrossPrice.value === '') return alert('Form is empty cannot add!');
-    let proId = dataStore.latestId;
+    let proId = dataStore.latestIdP;
     if (proId === null || dataStore.products.length === 0) {
         proId = 1;
     } else {
@@ -140,7 +141,7 @@ function onAdd(event) {
         grossprice: inputGrossPrice.value,
     }
 
-    dataStore.latestId = proId;
+    dataStore.latestIdP = proId;
 
     if (editIndex === null) {
         dataStore.products.push(newProduct)
@@ -183,8 +184,8 @@ function updateQuantity(e) {
 function categorySelect() {
     for (let listcat of dataStore.categories) {
         let option = createElement('option');
-        option.value = listcat;
-        option.textContent = listcat;
+        option.value = listcat.name;
+        option.textContent = listcat.name;
         select.appendChild(option)
 
     }

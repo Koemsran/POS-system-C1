@@ -10,55 +10,76 @@
     <link rel="stylesheet" href="order.css">
     <script src="order.js"></script>
 </head>
+
 <body>
-    <main>
-        <div class="sidebarleft">
-            <div id="search-bar">
-                <input type="text" id="search" placeholder="Search ID here">
-                <a href=""><span class="search material-symbols-outlined">search</span></a>
-            </div>
-            <table class="tb">
-                <thead>
-                    <tr>
-                        <th class="col" colspan="5"></th>
-                    </tr>
-                    <tr id="tr-col">
-                        <th>Product ID</th>
-                        <th>Product Name</th>
-                        <th>Category</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
+    <div class="container">
+        <nav class="navbar">
+            <div class="icon">
+                <a href="../home/home.html"><span class="material-symbols-outlined">house</span></a>
+                <a href="../products/product.html"><span class="shop material-symbols-outlined">shopping_cart </span></a>
+                <a href="../category/category.html"><span class="material-symbols-outlined">tune</span></a>
+                <a href="#"><span class="active material-symbols-outlined">shopping_cart_checkout</span></a>
 
-                </tbody>
-            </table>
-            <button class="btn">Check Out</button>
-        </div>
-        <div class="sidebar">
-            <table>
-                <thead>
-                    <tr>
-                        <th class="color" colspan="5">CHECK OUT PRODUCT</th>
-                    </tr>
-                    <tr id="tr-row">
-                        <th>Product ID</th>
-                        <th>Product Name</th>
-                        <th>Category</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
 
-                </tbody>
-            </table>
-            <div class="output">
-                <h3><span>Total product: </span><span class="total-quan"></span></h3>
-                <button>Check Out</button>
             </div>
-        </div>
-    </main>
+        </nav>
+        <main>
+            <div class="main-header">
+                <div class="bg-logo">
+                    <div class="logo"><img src="../../images/logo1.png" alt=""></div>
+                </div>
+            </div>
+            <div class="main-content">
+
+
+                <div class="sidebarleft">
+                    <div id="search-bar">
+                        <input type="number" id="search" placeholder="Input ID">
+                    </div>
+                    <table class="tb">
+                        <thead>
+                            <tr>
+                                <th class="col" colspan="5"></th>
+                            </tr>
+                            <tr id="tr-col">
+                                <th>Product ID</th>
+                                <th>Product Name</th>
+                                <th>Category</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <button class="btn">Check Out</button>
+                </div>
+                <div class="sidebar">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="color" colspan="5">CHECK OUT PRODUCT</th>
+                            </tr>
+                            <tr id="tr-row">
+                                <th>Product ID</th>
+                                <th>Product Name</th>
+                                <th>Category</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <div class="output">
+                        <h3><span>Total product: </span><span class="total-quan"></span></h3>
+                        <button>Check Out</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 </body>
+
 </html>
