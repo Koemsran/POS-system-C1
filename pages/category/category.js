@@ -1,6 +1,6 @@
 
 import { getElement, getElements, saveData, laodData, createElement, show, hide } from "../../js/locialstorage.js";
-
+let editIndex = null;
 // =======================> FUNCTION <==========================
 function renderCategory() {
     tbody.remove()
@@ -79,11 +79,20 @@ function onAdd(event) {
         name: name,
         description: des,
     }
-    dataStore.categories.push(category)
 
+    if (editIndex === null) {
+        dataStore.categories.push(category)
+
+    }
+    else {
+        dataStore.categories[editIndex] = category;
+    }
+    editIndex = null;
     saveData('dataStore', dataStore)
+    renderCategory()
     hide(addInput)
     window.location.reload()
+    clearForm()
 }
 
 function onCancel() {
@@ -91,6 +100,7 @@ function onCancel() {
 }
 
 function removeElement(event) {
+
     let indexTr = event.target.closest('tr');
     let categorytId = indexTr.firstElementChild.nextElementSibling.dataset.id;
     let isRemove = window.confirm('Do you want to delete all products?');
@@ -104,29 +114,53 @@ function removeElement(event) {
     }
 
 }
+function editElement(event) {
 
+    let index = event.target.closest('tr').dataset.index;
+    let category = dataStore.categories[index];
+    show(addInput)
+    title.textContent = 'Update your category'
+    add.textContent = "Update";
+
+    console.log(category)
+    inputName.value = category.name; 
+    description.value = category.description;
+    editIndex = index;
+
+
+
+}
+function clearForm(){
+    inputName.value = "";
+    description.value = "";
+
+}
 
 function getBtn(tbody) {
+
     let btnRemove = tbody.lastElementChild.lastElementChild.lastElementChild.lastElementChild;
-    // let btnEdit = tbody.lastElementChild.lastElementChild.lastElementChild.firstElementChild.nextElementSibling;
+    let btnEdit = tbody.lastElementChild.lastElementChild.lastElementChild.firstElementChild.nextElementSibling;
     // let btnView = tbody.lastElementChild.lastElementChild.lastElementChild.firstElementChild;
     btnRemove.addEventListener('click', removeElement)
-    // btnEdit.addEventListener('click', editElement)
+    btnEdit.addEventListener('click', editElement)
     // btnView.addEventListener('click', viewElement)
 }
 
 //==================> TABLE <=================
 let tbody = getElement("tbody");
-let table = getElement('table')
+let table = getElement('table');
+let title = getElement('header h1');
+
 //=================> GRT VALUE FROM INPUT <=====================
 let inputName = getElement('.g-name input');
-let description = getElement('.Description textarea')
+let description = getElement('.Description textarea');
 let dataStore = laodData('dataStore');
+
 // ===============> GET BUTTON HERE <====================
 let add = getElement('#btn-add');
 let cancel = getElement('#btn-cancel');
 let btnAdd = getElement(".add-category button");
-let addInput = getElement('#add-category')
+let addInput = getElement('#add-category');
 
 //====================> ADD EVENLISTENER <====================
 btnAdd.addEventListener("click", addCategory);

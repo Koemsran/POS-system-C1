@@ -3,7 +3,7 @@ import { getElement, getElements, saveData, laodData, createElement, show, hide 
 // ================> Global varibles <===================
 let dataStore = {
     products: [],
-    categories: [{Id:1, name: 'perfume'}],
+    categories: [{Id:1, name: 'perfume', description: "mixture of fragrant essential oils or aroma compounds, fixatives and solvents"}],
     latestIdP: null,
     latestIdC: 1,
 }
