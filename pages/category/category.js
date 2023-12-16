@@ -4,16 +4,18 @@ import { getElement, getElements, saveData, laodData, createElement, show, hide 
 // =======================> FUNCTION <==========================
 function renderCategory() {
     tbody.remove()
-    let createTbody = document.createElement('tbody');
-
+    let newTbody = document.createElement('tbody');
+    let index = 0
     for (let listCategory of dataStore.categories) {
         let tdRow = createElement('tr');
-
+        tdRow.dataset.index = index;
+        index++
         let tdId = createElement('td');
         tdId.textContent = "00" + listCategory.Id;
 
         let tdName = createElement('td');
         tdName.textContent = listCategory.name;
+        tdName.dataset.id = listCategory.Id;
 
         let tdAction = createElement('td');
         let action = createElement('div');
@@ -45,10 +47,12 @@ function renderCategory() {
         tdRow.appendChild(tdId);
         tdRow.appendChild(tdName);
         tdRow.appendChild(tdAction);
-        createTbody.appendChild(tdRow);
-        table.appendChild(createTbody);
-
+        newTbody.appendChild(tdRow);
+        table.appendChild(newTbody);
+        getBtn(newTbody)
+        
     }
+    
 
 }
 
@@ -78,13 +82,37 @@ function onAdd(event) {
     dataStore.categories.push(category)
 
     saveData('dataStore', dataStore)
-    console.log(dataStore)
     hide(addInput)
     window.location.reload()
 }
 
 function onCancel() {
     hide(addInput)
+}
+
+function removeElement(event) {
+    let indexTr = event.target.closest('tr');
+    let categorytId = indexTr.firstElementChild.nextElementSibling.dataset.id;
+    let isRemove = window.confirm('Do you want to delete all products?');
+    if (isRemove) {
+        indexTr.remove()
+        let categoryIndex = dataStore.categories.findIndex(category => category.id === parseInt(categorytId));
+
+        dataStore.categories.splice(categoryIndex, 1);
+        saveData('dataStore', dataStore)
+
+    }
+
+}
+
+
+function getBtn(tbody) {
+    let btnRemove = tbody.lastElementChild.lastElementChild.lastElementChild.lastElementChild;
+    // let btnEdit = tbody.lastElementChild.lastElementChild.lastElementChild.firstElementChild.nextElementSibling;
+    // let btnView = tbody.lastElementChild.lastElementChild.lastElementChild.firstElementChild;
+    btnRemove.addEventListener('click', removeElement)
+    // btnEdit.addEventListener('click', editElement)
+    // btnView.addEventListener('click', viewElement)
 }
 
 //==================> TABLE <=================

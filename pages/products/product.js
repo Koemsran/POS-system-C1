@@ -174,8 +174,6 @@ function updateQuantity(e) {
     dataStore.products[productIndex].quantity = qty;
 
     saveData('dataStore', dataStore)
-    // update total
-
     renderProduct()
     window.location.reload();
 
@@ -197,8 +195,8 @@ function categorySelect() {
 function categoryfillter() {
     for (let listcat of dataStore.categories) {
         let option = createElement('option');
-        option.value = listcat;
-        option.textContent = listcat;
+        option.value = listcat.name;
+        option.textContent = listcat.name;
         fill.appendChild(option)
 
     }
@@ -249,10 +247,9 @@ function removeElement(event) {
     if (isRemove) {
         indexTr.remove()
         let productIndex = dataStore.products.findIndex(product => product.id === parseInt(productId));
-
+ 
         dataStore.products.splice(productIndex, 1);
         saveData('dataStore', dataStore)
-        console.log(productIndex)
 
     }
 
