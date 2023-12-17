@@ -3,7 +3,7 @@ import { getElement, getElements, saveData, laodData, createElement, show, hide 
 // ================> Global varibles <===================
 let dataStore = {
     products: [],
-    categories: [{Id:1, name: 'perfume'}],
+    categories: [{Id:1, name: 'perfume', description: "mixture of fragrant essential oils or aroma compounds, fixatives and solvents"}],
     latestIdP: null,
     latestIdC: 1,
 }
@@ -174,8 +174,6 @@ function updateQuantity(e) {
     dataStore.products[productIndex].quantity = qty;
 
     saveData('dataStore', dataStore)
-    // update total
-
     renderProduct()
     window.location.reload();
 
@@ -197,8 +195,8 @@ function categorySelect() {
 function categoryfillter() {
     for (let listcat of dataStore.categories) {
         let option = createElement('option');
-        option.value = listcat;
-        option.textContent = listcat;
+        option.value = listcat.name;
+        option.textContent = listcat.name;
         fill.appendChild(option)
 
     }
@@ -242,29 +240,16 @@ function clearFilter() {
 
 function removeElement(event) {
     let indexTr = event.target.closest('tr');
-    // let quanlity = indexTr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.value;
     let productId = indexTr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.dataset.id;
     let isRemove = window.confirm('Do you want to delete all products?');
 
     if (isRemove) {
         indexTr.remove()
         let productIndex = dataStore.products.findIndex(product => product.id === parseInt(productId));
-
         dataStore.products.splice(productIndex, 1);
         saveData('dataStore', dataStore)
-        console.log(productIndex)
 
     }
-
-
-    // else {
-
-    //     let productIndex = dataStore.products.findIndex(product => product.id === parseInt(productId));
-    //     dataStore.products[productIndex].quantity = quanlity - 1;
-    //     saveData('dataStore', dataStore)
-    //     window.location.reload()
-    //     renderProduct()
-    // }
 
 }
 
