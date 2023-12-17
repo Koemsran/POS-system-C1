@@ -20,11 +20,11 @@ if (loadProduct != undefined) {
 
 function renderProduct() {
     tbody.remove()
-    //insert form
     let newTbody = createElement('tbody');
     let totalPrice = 0;
     let totalQuantity = 0;
     let index = 0
+    
     for (let listProduct of dataStore.products) {
 
         let tRow = createElement('tr');

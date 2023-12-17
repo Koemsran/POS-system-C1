@@ -8,7 +8,8 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="order.css">
-    <script src="order.js"></script>
+    <script type="module" src="order.js"></script>
+    <script type="module" src="../../js/locialstorage.js"></script>
 </head>
 
 <body>
@@ -43,28 +44,28 @@
             </div>
             <div class="main-content">
 
-
                 <div class="sidebarleft">
                     <div id="search-bar">
-                        <input type="number" id="search" placeholder="Input ID"> 
+                        <input type="number" id="search"  placeholder="Input ID"> 
+                        <span style="display: none;">Sorry! we can't find this ID</span>
                     </div>
                     <table>
                         <tr>
                             <th class="search-pro"></th>
                         </tr>
                         <tr>
-                            <th id="qty"> QTY : </th>
+                            <th id="qty"> InStock : <span></span></th>
                         </tr>
                         <tr>
-                            <th id="price-pro"> $ </th>
+                            <th id="price-pro"></th>
                         </tr>
                     </table>
                     <div class="checkout">
-                        <button class="btn">Checkout Product</button>
+                        <button class="btn">Add to cart</button>
                     </div>
                 </div>
                 <div class="sidebar">
-                    <table>
+                    <table id="table">
                         <thead>
                             <tr>
                                 <th class="color" colspan="5">CHECK OUT PRODUCT</th>
@@ -72,17 +73,17 @@
                             <tr id="tr-row">
                                 <th>Product ID</th>
                                 <th>Product Name</th>
-                                <th>Category</th>
                                 <th>Quantity</th>
                                 <th>Price</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody></tbody>
+                        <tbody class="tbody"></tbody>
                     </table>
                     <div class="output">
-                        <h3><span>Total product: </span><span class="total-quan"></span></h3>
+                        <h3><span>Total product: </span><span class="total"></span></h3>
                         <button>Pricnt reciept</button>
-                        <button>Send reciept</button>
+                        <button>Check out</button>
                     </div>
                 </div>
             </div>

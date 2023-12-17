@@ -92,29 +92,37 @@ main {
 }
 #search-bar {
     display: flex;
-    position: relative;
-    margin-left: 50px;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
     margin-top: 20px;
 }
-
 #search-bar input {
-    padding: 15px;
+    padding: 10px;
     /* break-inside: 5px; */
-    width: 40%;
+    width: 60%;
     margin-top: 20px;
 
 }
 #search-bar span {
-    margin-left: -38px;
-    color: rgb(247, 236, 236);
-    background-color: green;
-    padding: 7px;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    width: 60%;
+    color: red;
+    
+    font-size: 12px;
+    text-align: start;
+    margin-top: 5px;
+    
 }
 
 .search-pro{
     border: 1px solid black;
     height: 55px;
     background-color: teal;
+    color: white;
 }
 
 #qty{
@@ -126,30 +134,30 @@ main {
     border: 1px solid black;
     height: 55px;
     background-color: teal;
+    color: white;
 }
 
 .checkout  {
     display: flex;
     justify-content: center;
-    margin-bottom: 60px;
-    height: 14%;
+    margin-bottom: 90px;
+    height: 7%;
 }
 
-.btn{
+.checkout .btn{
     border: 1px solid gray;
     width: 40%;
-    padding: 10px;
+    padding: 5px;
     background-color: green;
     color: white;
-    margin-top: 15px;
 }
 
 
 /* ............sidebar............ */  
 .sidebar{
     flex: 3;
-    background-color: rgb(176, 176, 202);
-    /* background-color: goldenrod; */
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 .sidebarleft{
     display: flex;
@@ -215,4 +223,14 @@ tbody tr td {
 }
 .output h3 {
     margin-bottom: 30px;
+}
+.remove{
+    color: red;
+    cursor: pointer;
+}
+.Qty{
+    width: 30%;
+    padding: 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
 }
