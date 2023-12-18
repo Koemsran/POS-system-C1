@@ -6,6 +6,9 @@ let listId = [];
 let dataCheckout = {
     cart: []
 }
+let dataSoldout ={
+    sold:[]
+}
 if (laodData('dataCheckout') !== null) {
     dataCheckout = laodData('dataCheckout');
 }
@@ -40,10 +43,14 @@ function addCart() {
         id: parseInt(searchId.value),
         name: namePro.textContent,
         quantity: parseInt(qty.textContent),
-        price: parseInt(price.textContent)
+        price: parseInt(price.textContent),
+        addquan:1
     }
     dataCheckout.cart.push(list)
     saveData('dataCheckout', dataCheckout)
+    if (dataCheckout.cart[0] === null){
+        show(printReciept)
+    }
     window.location.reload();
 }
 
@@ -64,17 +71,17 @@ function renderCart() {
         let tdPrice = createElement('td');
         let tdAtion = createElement('td');
         let tdQuan = createElement('td');
-
+        tdQuan.dataset.index = index
         tdQuan.className = 'tdQuan';
         tdId.dataset.id = index;
 
         let qty = createElement('input')
         qty.className = 'Qty'
         qty.type = 'number';
-        qty.value = data.quantity;
+        qty.value = data.addquan;
         tdQuan.appendChild(qty)
         qty.addEventListener('change', updateQuantity)
-
+        
 
         tdId.textContent = data.id;
         tdName.textContent = data.name;
@@ -91,16 +98,14 @@ function renderCart() {
         tRow.appendChild(tdName);
         tRow.appendChild(tdQuan);
         tRow.appendChild(tdPrice);
-        tRow.appendChild(tdAtion)
+        tRow.appendChild(tdAtion);
         newTbody.appendChild(tRow);
         table.appendChild(newTbody)
-        totalPrice += parseInt(tdPrice.textContent);
+        totalPrice += (parseInt(tdPrice.textContent)*parseInt(qty.value));
         getBtn(newTbody)
         index++;
     }
     total.textContent = parseInt(totalPrice) + '$'
-
-    
 
 }
 
@@ -112,14 +117,20 @@ function clearrForm() {
 
 function updateQuantity(e) {
     let qty = e.target.value;
-    let cartId = e.target.closest('td').dataset.id;
-    let Index = dataCheckout.cart.findIndex(list => parseInt(list.id) === parseInt(cartId));
-    if (qty > dataCheckout.cart[Index].quantity) {
+    let cartId = e.target.closest('td').dataset.index;
+    if (qty > dataCheckout.cart[cartId].quantity) {
         window.alert('Product not enough')
+        qty = qty-1;
     }
+    if (qty<=0){
+        window.alert('Cannot accept');
+        qty = parseInt(qty)+1;
 
+    }
+    dataCheckout.cart[cartId].addquan = qty;
     saveData('dataCheckout', dataCheckout)
     renderCart()
+    window.location.reload()
 
 }
 
@@ -132,15 +143,20 @@ function removeElement(event) {
         dataCheckout.cart.splice(productId, 1);
         saveData('dataCheckout', dataCheckout)
     }
+    window.location.reload()
+
 
 }
-
 function getBtn(tbody) {
     let btnRemove = tbody.lastElementChild.lastElementChild.lastElementChild.lastElementChild;
     btnRemove.addEventListener('click', removeElement);
 }
 function printer() {
     show(printReciept)
+}
+function soldOut(){
+    dataSoldout.sold = dataCheckout.cart;
+    saveData('dataSoldout', dataSoldout)
 }
 // ===============> GET ELEMENT <================
 let searchId = getElement('#search');
@@ -156,6 +172,7 @@ let message = getElement('.message');
 let btnPrint = getElement('.print');
 let printReciept = getElement('#print-reciept');
 const btn_print = getElement('.btn-print');
+let btnCheck = getElement('.check')
 
 //==============>ADD EVENLISTENER <================
 
@@ -166,5 +183,5 @@ btn_print.addEventListener('click', () => {
 searchId.addEventListener('keyup', checkId);
 btnAdd.addEventListener('click', addCart);
 btnPrint.addEventListener('click', printer);
-// laodData("dataCheckout")
-renderCart();
+btnCheck.addEventListener('click',soldOut)
+renderCart()
