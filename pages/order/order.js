@@ -1,28 +1,19 @@
 import { getElement, getElements, saveData, laodData, createElement, show, hide } from "../../js/locialstorage.js";
 
-// ===============> GET ELEMENT <================
-let searchId = getElement('#search');
-let namePro = getElement(".search-pro");
-let qty = getElement('#qty span');
-let price = getElement("#price-pro")
-let alert = getElement("#search-bar span");
-let btnAdd = getElement('.checkout .btn');
-let tbody = getElement('.tbody');
-let table = getElement('#table')
-let total = getElement('.total')
-
 // ===============> LOCAL VARIBLE <=============
 let dataStore = laodData('dataStore');
 let listId = [];
+let dataCheckout = {
+    cart: []
+
+}
 
 //==============> FUNCTION <==================
 function checkId() {
-
     for (let ID of dataStore.products) {
         listId.push(ID.id)
 
     }
-
     if (listId.includes(parseInt(searchId.value))) {
         hide(alert)
         let productIndex = dataStore.products.findIndex(product => product.id === parseInt(searchId.value));
@@ -38,8 +29,6 @@ function checkId() {
             price: parseInt(obj.grossprice)
         }
         dataCheckout.cart.push(list)
-        saveData('dataCheckout', dataCheckout)
-        laodData("dataCheckout")
 
 
     }
@@ -50,16 +39,18 @@ function checkId() {
     }
     if (searchId.value === '') {
         hide(alert)
-        // clearrForm()
+
     }
-    laodData("dataCheckout")
+
+
 
 }
-function getData(){
-    
-}
+
 function renderCart() {
     searchId.value = ''
+    hide(message)
+    saveData('dataCheckout', dataCheckout)
+    laodData("dataCheckout")
     clearrForm()
     tbody.remove()
     let newTbody = createElement('tbody');
@@ -84,7 +75,7 @@ function renderCart() {
         qty.value = data.quantity;
         tdQuan.appendChild(qty)
         qty.addEventListener('change', updateQuantity)
-        
+
 
         tdId.textContent = data.id;
         tdName.textContent = data.name;
@@ -121,16 +112,12 @@ function updateQuantity(e) {
     let qty = e.target.value;
     let cartId = e.target.closest('td').dataset.id;
     let Index = dataCheckout.cart.findIndex(list => parseInt(list.id) === parseInt(cartId));
-    if (qty > dataCheckout.cart[Index].quantity){
+    if (qty > dataCheckout.cart[Index].quantity) {
         window.alert('Product not enough')
     }
-    
-    
 
     saveData('dataCheckout', dataCheckout)
     renderCart()
-    
-
 
 }
 
@@ -153,12 +140,33 @@ function getBtn(tbody) {
     let btnRemove = tbody.lastElementChild.lastElementChild.lastElementChild.lastElementChild;
     btnRemove.addEventListener('click', removeElement);
 }
-
-let dataCheckout = {
-    cart: []
-
+function printer() {
+    show(printReciept)
 }
 
+
+// ===============> GET ELEMENT <================
+let searchId = getElement('#search');
+let namePro = getElement(".search-pro");
+let qty = getElement('#qty span');
+let price = getElement("#price-pro")
+let alert = getElement("#search-bar span");
+let btnAdd = getElement('.checkout .btn');
+let tbody = getElement('.tbody');
+let table = getElement('#table')
+let total = getElement('.total')
+let message = getElement('.message');
+let btnPrint = getElement('.print');
+let printReciept = getElement('#print-reciept');
+const btn_print = getElement('.btn-print');
+
 //==============>ADD EVENLISTENER <================
+
+btn_print.addEventListener('click', () => {
+    window.print()
+});
+
 searchId.addEventListener('keyup', checkId)
 btnAdd.addEventListener('click', renderCart)
+btnPrint.addEventListener('click', printer)
+laodData("dataCheckout")

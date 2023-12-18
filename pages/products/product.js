@@ -105,7 +105,6 @@ function renderProduct() {
 
 }
 
-
 function addProduct() {
     show(addInput)
     title.textContent = 'Add product more'
@@ -118,6 +117,7 @@ function addProduct() {
 function onCancel(event) {
     event.preventDefault()
     hide(addInput)
+    window.location.reload()
 
 }
 
@@ -155,7 +155,6 @@ function onAdd(event) {
     clearForm()
     renderProduct()
     window.location.reload()
-
 
 }
 
