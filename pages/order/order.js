@@ -5,9 +5,10 @@ let dataStore = laodData('dataStore');
 let listId = [];
 let dataCheckout = {
     cart: []
-
 }
-
+if (laodData('dataCheckout') !== null) {
+    dataCheckout = laodData('dataCheckout');
+}
 //==============> FUNCTION <==================
 function checkId() {
     for (let ID of dataStore.products) {
@@ -21,16 +22,6 @@ function checkId() {
         namePro.textContent = obj.name;
         qty.textContent = obj.quantity;
         price.textContent = obj.grossprice + "$";
-
-        let list = {
-            id: parseInt(searchId.value),
-            name: obj.name,
-            quantity: parseInt(obj.quantity),
-            price: parseInt(obj.grossprice)
-        }
-        dataCheckout.cart.push(list)
-
-
     }
     else {
         show(alert)
@@ -42,21 +33,29 @@ function checkId() {
 
     }
 
+}
 
-
+function addCart() {
+    let list = {
+        id: parseInt(searchId.value),
+        name: namePro.textContent,
+        quantity: parseInt(qty.textContent),
+        price: parseInt(price.textContent)
+    }
+    dataCheckout.cart.push(list)
+    saveData('dataCheckout', dataCheckout)
+    window.location.reload();
 }
 
 function renderCart() {
     searchId.value = ''
     hide(message)
-    saveData('dataCheckout', dataCheckout)
-    laodData("dataCheckout")
     clearrForm()
     tbody.remove()
     let newTbody = createElement('tbody');
     newTbody.className = 'tbody';
     let totalPrice = 0;
-
+    let index = 0;
     for (let data of dataCheckout.cart) {
         let tRow = createElement('tr');
 
@@ -67,7 +66,7 @@ function renderCart() {
         let tdQuan = createElement('td');
 
         tdQuan.className = 'tdQuan';
-        tdQuan.dataset.id = data.id;
+        tdId.dataset.id = index;
 
         let qty = createElement('input')
         qty.className = 'Qty'
@@ -97,8 +96,11 @@ function renderCart() {
         table.appendChild(newTbody)
         totalPrice += parseInt(tdPrice.textContent);
         getBtn(newTbody)
+        index++;
     }
     total.textContent = parseInt(totalPrice) + '$'
+
+    
 
 }
 
@@ -123,15 +125,12 @@ function updateQuantity(e) {
 
 function removeElement(event) {
     let indexTr = event.target.closest('tr');
-    let productId = indexTr.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.dataset.id;
+    let productId = indexTr.firstElementChild.dataset.id;
     let isRemove = window.confirm('Do you want to delete all products?');
-
     if (isRemove) {
         indexTr.remove()
-        let productIndex = dataCheckout.cart.findIndex(cart => cart.id === parseInt(productId));
-        dataCheckout.cart.splice(productIndex, 1);
-        saveData('datacheckout', dataCheckout)
-
+        dataCheckout.cart.splice(productId, 1);
+        saveData('dataCheckout', dataCheckout)
     }
 
 }
@@ -143,8 +142,6 @@ function getBtn(tbody) {
 function printer() {
     show(printReciept)
 }
-
-
 // ===============> GET ELEMENT <================
 let searchId = getElement('#search');
 let namePro = getElement(".search-pro");
@@ -166,7 +163,8 @@ btn_print.addEventListener('click', () => {
     window.print()
 });
 
-searchId.addEventListener('keyup', checkId)
-btnAdd.addEventListener('click', renderCart)
-btnPrint.addEventListener('click', printer)
-laodData("dataCheckout")
+searchId.addEventListener('keyup', checkId);
+btnAdd.addEventListener('click', addCart);
+btnPrint.addEventListener('click', printer);
+// laodData("dataCheckout")
+renderCart();

@@ -76,7 +76,6 @@ main {
 .bg-logo img{
     width: 30%;
     
-
 }
 
 .main-content {
@@ -370,16 +369,15 @@ menu button:hover {
 
 .output .total {
     margin-left: 10px;
+
 }
 
 .output h3:nth-child(1) {
     border: 1px solid gray;
-    width: 21%;
+    width: 23%;
     padding: 10px;
 
 }
-
-
 
 
 /* ----------------------------- View product form   --------------------------   */
@@ -509,3 +507,4 @@ footer {
     font-size: 40px;
     color: teal;
 }
+

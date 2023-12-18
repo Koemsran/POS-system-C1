@@ -11,9 +11,5 @@ let dataStore = laodData('dataStore');
 
 
 // ==============> GET VALUE TO CART <===============
-let sumCategory = 0;
-for (let value of dataStore.categories){
-    sumCategory++
-}
-category.textContent = sumCategory;
+category.textContent = dataStore.categories.length;
 
