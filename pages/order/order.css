@@ -129,27 +129,23 @@ main {
 }
 
 .search-pro {
-    border: 1px solid black;
+
     height: 55px;
-    background-color: teal;
     color: white;
 }
 
 #qty {
-    border: 1px solid black;
     height: 100px;
-    text-align: left;
 }
 
 #price-pro {
-    border: 1px solid black;
+
     height: 55px;
-    background-color: teal;
-    color: white;
+    background-color: white;
 }
 
 .checkout {
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     margin-bottom: 90px;
     height: 7%;
@@ -161,6 +157,7 @@ main {
     padding: 5px;
     background-color: gray;
     color: white;
+    margin-left: 45px;
 }
 
 
@@ -187,8 +184,21 @@ table {
     border-collapse: collapse;
     width: 75%;
     margin: auto;
-    margin-top: 30px;
 
+}
+.search-pro {
+    height: 55px;
+    color: black;
+    width: 60%;
+}
+
+#qty {
+    height: 60px;
+}
+
+#price-pro {
+    height: 55px;
+    color: black;
 }
 
 .sidebarleft .btn {
@@ -204,7 +214,6 @@ th {
 }
 
 thead {
-
     border-bottom: 2px solid rgb(73, 70, 70);
 }
 

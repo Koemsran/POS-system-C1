@@ -9,14 +9,10 @@ let income = getElement('#c4');
 
 // ==============> GET DATA FROM LOCALSTOREAGE <===============
 let dataStore = laodData('dataStore');
-
+let dataSoldout = laodData('dataSoldout');
 
 // ==============> GET VALUE TO CART <===============
-let sumCategory = 0;
-for (let value of dataStore.categories){
-    sumCategory++
-}
-category.textContent = sumCategory;
+category.textContent = dataStore.categories.length;
 
 let result = 0;
 for (let value of incomeValue) {
