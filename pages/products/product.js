@@ -6,6 +6,7 @@ let dataStore = {
     categories: [{Id:1, name: 'perfume', description: "mixture of fragrant essential oils or aroma compounds, fixatives and solvents"}],
     latestIdP: null,
     latestIdC: 1,
+    instock: 0,
 }
 
 let editIndex = null
@@ -100,7 +101,7 @@ function renderProduct() {
 
     total.textContent = parseInt(totalPrice) + '$'
     totalQuant.textContent = parseInt(totalQuantity)
-
+    dataStore.instock = parseInt(totalQuant.textContent);
 
 
 }

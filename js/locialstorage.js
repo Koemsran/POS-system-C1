@@ -4,6 +4,9 @@ export function saveData(key, value){
 export function laodData(key){
     return JSON.parse(localStorage.getItem(key))
 }
+export function removeData(key){
+    return localStorage.removeItem(key)
+}
 export function getElement(element){
     return document.querySelector(element)
 }

@@ -1,13 +1,18 @@
-import { getElement, getElements, saveData, laodData, createElement, show, hide } from "../../js/locialstorage.js";
+import { getElement, getElements, saveData, laodData,removeData, createElement, show, hide } from "../../js/locialstorage.js";
 
 // ===============> LOCAL VARIBLE <=============
 let dataStore = laodData('dataStore');
 let listId = [];
 let dataCheckout = {
-    cart: []
+    cart: [],
+    total:0,
 }
 let dataSoldout ={
-    sold:[]
+    sold:[],
+    totalqty:0,
+}
+let dataIcome ={
+    income :[]
 }
 if (laodData('dataCheckout') !== null) {
     dataCheckout = laodData('dataCheckout');
@@ -62,6 +67,7 @@ function renderCart() {
     let newTbody = createElement('tbody');
     newTbody.className = 'tbody';
     let totalPrice = 0;
+    let totalquan = 0;
     let index = 0;
     for (let data of dataCheckout.cart) {
         let tRow = createElement('tr');
@@ -102,10 +108,14 @@ function renderCart() {
         newTbody.appendChild(tRow);
         table.appendChild(newTbody)
         totalPrice += (parseInt(tdPrice.textContent)*parseInt(qty.value));
+        totalquan += parseInt(qty.value)
         getBtn(newTbody)
         index++;
     }
-    total.textContent = parseInt(totalPrice) + '$'
+    total.textContent = parseInt(totalPrice) + '$';
+    dataSoldout.totalqty = totalquan;
+    dataCheckout.total = parseInt(totalPrice) + '$';
+    
 
 }
 
@@ -156,7 +166,13 @@ function printer() {
 }
 function soldOut(){
     dataSoldout.sold = dataCheckout.cart;
+    dataIcome.income.push(dataCheckout.total);
     saveData('dataSoldout', dataSoldout)
+    saveData('dataIcome', dataIcome)
+    removeData('dataCheckout')
+    window.location.reload()
+    
+
 }
 // ===============> GET ELEMENT <================
 let searchId = getElement('#search');
