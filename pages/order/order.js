@@ -1,24 +1,30 @@
-import { getElement, getElements, saveData, laodData,removeData, createElement, show, hide } from "../../js/locialstorage.js";
+import { getElement, getElements, saveData, laodData, removeData, createElement, show, hide } from "../../js/locialstorage.js";
 
 // ===============> LOCAL VARIBLE <=============
 let dataStore = laodData('dataStore');
 let listId = [];
 let dataCheckout = {
     cart: [],
-    total:0,
+    total: 0,
 }
-let dataSoldout ={
-    sold:[],
-    totalqty:0,
+let dataSoldout = {
+    sold: [],
+    totalqty: 0,
 }
-let dataIcome ={
-    income :[]
+let dataIcome = {
+    income: []
 }
 if (laodData('dataCheckout') !== null) {
     dataCheckout = laodData('dataCheckout');
 }
 //==============> FUNCTION <==================
 function checkId() {
+    if (searchId.value === '') {
+        btnAdd.disabled = true;
+    } else {
+        btnAdd.disabled = false;
+
+    }
     for (let ID of dataStore.products) {
         listId.push(ID.id)
 
@@ -40,6 +46,12 @@ function checkId() {
         hide(alert)
 
     }
+    if (namePro.textContent === "" || qty.textContent === "" || price.textContent === "") {
+        btnAdd.disabled = true;
+    } else {
+        btnAdd.disabled = false;
+
+    }
 
 }
 
@@ -49,11 +61,11 @@ function addCart() {
         name: namePro.textContent,
         quantity: parseInt(qty.textContent),
         price: parseInt(price.textContent),
-        addquan:1
+        addquan: 1
     }
     dataCheckout.cart.push(list)
     saveData('dataCheckout', dataCheckout)
-    if (dataCheckout.cart[0] === null){
+    if (dataCheckout.cart[0] === null) {
         show(printReciept)
     }
     window.location.reload();
@@ -87,7 +99,7 @@ function renderCart() {
         qty.value = data.addquan;
         tdQuan.appendChild(qty)
         qty.addEventListener('change', updateQuantity)
-        
+
 
         tdId.textContent = data.id;
         tdName.textContent = data.name;
@@ -107,7 +119,7 @@ function renderCart() {
         tRow.appendChild(tdAtion);
         newTbody.appendChild(tRow);
         table.appendChild(newTbody)
-        totalPrice += (parseInt(tdPrice.textContent)*parseInt(qty.value));
+        totalPrice += (parseInt(tdPrice.textContent) * parseInt(qty.value));
         totalquan += parseInt(qty.value)
         getBtn(newTbody)
         index++;
@@ -115,7 +127,7 @@ function renderCart() {
     total.textContent = parseInt(totalPrice) + '$';
     dataSoldout.totalqty = totalquan;
     dataCheckout.total = parseInt(totalPrice) + '$';
-    
+
 
 }
 
@@ -130,11 +142,11 @@ function updateQuantity(e) {
     let cartId = e.target.closest('td').dataset.index;
     if (qty > dataCheckout.cart[cartId].quantity) {
         window.alert('Product not enough')
-        qty = qty-1;
+        qty = qty - 1;
     }
-    if (qty<=0){
+    if (qty <= 0) {
         window.alert('Cannot accept');
-        qty = parseInt(qty)+1;
+        qty = parseInt(qty) + 1;
 
     }
     dataCheckout.cart[cartId].addquan = qty;
@@ -164,14 +176,14 @@ function getBtn(tbody) {
 function printer() {
     show(printReciept)
 }
-function soldOut(){
+function soldOut() {
     dataSoldout.sold = dataCheckout.cart;
     dataIcome.income.push(dataCheckout.total);
     saveData('dataSoldout', dataSoldout)
     saveData('dataIcome', dataIcome)
     removeData('dataCheckout')
     window.location.reload()
-    
+
 
 }
 // ===============> GET ELEMENT <================
@@ -199,5 +211,5 @@ btn_print.addEventListener('click', () => {
 searchId.addEventListener('keyup', checkId);
 btnAdd.addEventListener('click', addCart);
 btnPrint.addEventListener('click', printer);
-btnCheck.addEventListener('click',soldOut)
+btnCheck.addEventListener('click', soldOut)
 renderCart()
