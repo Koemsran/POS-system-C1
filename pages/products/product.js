@@ -283,13 +283,20 @@ function viewElement(event) {
     let stock = getElement('#stock-tail');
     let nPrice = getElement('#nprice-tail');
     let gPrice = getElement('#gprice-tail');
-
+    let date = getElement('.date');
+    let amount = getElement('.amount');
+    let price = getElement('.price');
+    let getDate = new Date();
     name.textContent = ": " + product.name;
     cat.textContent = ": " + product.category;
     quan.textContent = ": " + product.quantity;
     stock.textContent = ": " + product.quantity;
     nPrice.textContent = ": " + product.netprice + "$";
     gPrice.textContent = ": " + product.grossprice + "$";
+    date.textContent = " : " +getDate;
+    amount.textContent =" : " + 3 +"(amount)"
+    price.textContent = ": 25$ (price)"
+    
 
 
 

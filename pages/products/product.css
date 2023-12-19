@@ -507,4 +507,9 @@ footer {
     font-size: 40px;
     color: teal;
 }
+.date{
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+}
 

@@ -19,12 +19,7 @@ if (laodData('dataCheckout') !== null) {
 }
 //==============> FUNCTION <==================
 function checkId() {
-    if (searchId.value === '') {
-        btnAdd.disabled = true;
-    } else {
-        btnAdd.disabled = false;
 
-    }
     for (let ID of dataStore.products) {
         listId.push(ID.id)
 
@@ -48,8 +43,11 @@ function checkId() {
     }
     if (namePro.textContent === "" || qty.textContent === "" || price.textContent === "") {
         btnAdd.disabled = true;
+        btnAdd.style.background = 'gray';
+
     } else {
         btnAdd.disabled = false;
+        btnAdd.style.background = 'green';
 
     }
 
