@@ -99,7 +99,7 @@ function renderCart() {
         qty.addEventListener('change', updateQuantity)
 
 
-        tdId.textContent = data.id;
+        tdId.textContent = "#00"+data.id;
         tdName.textContent = data.name;
         tdPrice.textContent = data.price + "$";
 
@@ -167,13 +167,16 @@ function removeElement(event) {
 
 
 }
+
 function getBtn(tbody) {
     let btnRemove = tbody.lastElementChild.lastElementChild.lastElementChild.lastElementChild;
     btnRemove.addEventListener('click', removeElement);
 }
+
 function printer() {
     show(printReciept)
 }
+
 function soldOut() {
     dataSoldout.sold = dataCheckout.cart;
     dataIcome.income.push(dataCheckout.total);

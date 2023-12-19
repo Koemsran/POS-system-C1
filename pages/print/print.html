@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="print.css">
+    <script type="module" src="print.js" defer></script>
+</head>
+<body>
+    <div id="print-reciept" style="display: none">
+        <form open>
+            <div class="list-date">
+                <div class="date">12/18/2023 8:43:32</div>
+                <div class="order">Order</div>
+                <div class="proid">001-002-003</div>
+            </div>
+            <img src="../../images/pnc.png" alt="">
+            <div class="describe">
+                <p>My company (cambodia)</p>
+                <p>Tell: +855 000 000 </p>
+                <p>https//www.myname.com</p>
+            </div>
+            <div class="reciept-order">
+                <p>Reciept: Order 001-002-003</p>
+                <p>Date: 12/18/2023 8:43:32 </p>
+            </div>
+            <table class="table-reciept">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div class="price-total">
+                <h3>TOTAL: <span>0$</span></h3>
+            </div>
+            <div class="print-btn">
+                <button class="btn-print">Print</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
