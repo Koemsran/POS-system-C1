@@ -91,12 +91,13 @@ main {
     display: flex;
     gap: 50px;
     padding: 50px;
+    
 
 }
 
 .card-grid {
     display: flex;
-    flex: 0.5;
+    flex: 1.5;
     flex-wrap: wrap;
     gap: 20px;
     width: 100%;
@@ -138,22 +139,6 @@ main {
     padding: 25px;
 }
 
-
-
-table {
-    border-collapse: collapse;
-    width: 95%;
-    font-size: 13px;
-    margin: auto;
-    margin-top: 20px;
-    flex: 4px;
-}
-
-caption {
-    font-weight: bold;
-    margin-bottom: -50px;
-}
-
 .text:hover {
     background-color: #8B4513;
 }
@@ -172,4 +157,29 @@ caption {
     font-size: 40px;
     color: teal;
 
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 50%;
+    flex: 3.5;
+}
+
+form h1{
+    color: teal;
+}
+
+table {
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+table thead tr th {
+    border: 1px solid black;
+    padding: 10px;
+    width: 17%;
+    border-collapse: collapse;
 }
