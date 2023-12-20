@@ -137,7 +137,7 @@ function onAdd(event) {
         id: proId,
         name: inputName.value,
         category: inputCategory.value,
-        quantity: inputQuan.value,
+        quantity: parseInt(inputQuan.value),
         netprice: inputNetPrice.value,
         grossprice: inputGrossPrice.value,
     }

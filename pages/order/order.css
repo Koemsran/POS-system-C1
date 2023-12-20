@@ -145,7 +145,7 @@ main {
 }
 
 .checkout {
-    /* display: flex; */
+    display: flex;
     justify-content: center;
     margin-bottom: 90px;
     height: 7%;
@@ -157,7 +157,7 @@ main {
     padding: 5px;
     background-color: gray;
     color: white;
-    margin-left: 45px;
+
 }
 
 
@@ -230,7 +230,6 @@ tbody tr td {
 
 .output h3:nth-child(2) {
     width: 21%;
-    /* background-color: black; */
     padding: 10px;
     color: white;
 }
@@ -290,10 +289,11 @@ tbody tr td {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
+    /* height: 100vh; */
     width: 100%;
     background-color: rgba(0, 0, 0, 0.75);
-    z-index: 10;
+    z-index: 1;
+    overflow: auto;
 }
 
 form {
@@ -374,8 +374,9 @@ form .describe {
     border-top: 2px solid gray;
     width: 30%;
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     align-items: end;
+    
 }
 
 .print-btn {

@@ -46,7 +46,7 @@
                 <div class="sidebarleft">
                     <div id="search-bar">
                         <input type="number" id="search" placeholder="Order product by ID">
-                        <span style="display: none;">Sorry! we can't find this ID</span>
+                        <span style="display: none;">Sorry! product doesn't has stock</span>
                     </div>
                     <table class="cardpro">
                         <tr>
@@ -83,7 +83,9 @@
                         <tbody class="tbody"></tbody>
                     </table>
                     <div class="message">
-                        <img src="../../images/empty.png" alt="">
+                        <div class="imgae">
+                            <img src="../../images/empty.png" alt="">
+                        </div>
                         <div id="title">
                             <h2>Your Cart is </h2>
                             <h2 style="color: red;">Empty!</h2>
@@ -100,11 +102,6 @@
         </main>
         <div id="print-reciept" style="display: none">
             <form open>
-                <div class="list-date">
-                    <div class="date">12/18/2023 8:43:32</div>
-                    <div class="order">Order</div>
-                    <div class="proid">001-002-003</div>
-                </div>
                 <img src="../../images/pnc.png" alt="">
                 <div class="describe">
                     <p>My company (cambodia)</p>
@@ -121,13 +118,13 @@
                             <th>Product</th>
                             <th>Quantity</th>
                             <th>Unit Price</th>
-                            <th>Amount</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody class="tbody-print"></tbody>
                 </table>
                 <div class="price-total">
                     <h3>TOTAL: <span>0$</span></h3>
+                    <h3>Amount: <span class="amount">0</span></h3>
                 </div>
                 <div class="print-btn">
                     <button class="btn-print">Print</button>

@@ -16,11 +16,16 @@ let listId = [];
 let dataCheckout = {
   cart: [],
 };
+let soldOut = 0;
+let printData = [];
+if (laodData('soldOut')!== null){
+  soldOut = laodData('soldOut')
+}
 if (laodData("dataCheckout") !== null) {
   dataCheckout = laodData("dataCheckout");
-}
+} 
 if (laodData("historyData") !== null) {
-  historyData = laodData("historyData");
+    historyData = laodData("historyData");
 }
 //==============> FUNCTION <==================
 function checkId() {
@@ -36,7 +41,6 @@ function checkId() {
     namePro.textContent = obj.name;
     qty.textContent = obj.quantity;
     price.textContent = obj.grossprice + "$";
-    
   } else {
     show(alert);
     clearrForm();
@@ -44,8 +48,7 @@ function checkId() {
   if (searchId.value === "") {
     hide(alert);
   }
-
-  if (namePro.textContent === "" || qty.textContent === ""||  price.textContent === "") {
+  if (namePro.textContent === "" || qty.textContent === "" ||  price.textContent === "") {
     btnAdd.disabled = true;
     btnAdd.style.background = 'gray';
 
@@ -54,16 +57,15 @@ function checkId() {
     btnAdd.style.background = 'green';
 
 }
-
 }
 
 function addCart() {
+  if (searchId.value === "") return window.alert("Please enter product id");
   let list = {
     id: parseInt(searchId.value),
     name: namePro.textContent,
-    quantity: parseInt(qty.textContent),
+    quantity: 1,
     price: parseInt(price.textContent),
-    addquan:1,
   };
   dataCheckout.cart.push(list);
   saveData("dataCheckout", dataCheckout);
@@ -71,18 +73,18 @@ function addCart() {
 }
 
 function renderCart() {
-  
   searchId.value = "";
-  hide(message);
+
+  // hide(message);
   clearrForm();
   tbody.remove();
   let newTbody = createElement("tbody");
   newTbody.className = "tbody";
   let totalPrice = 0;
-  let totalquan =0;
   let index = 0;
   for (let data of dataCheckout.cart) {
     let tRow = createElement("tr");
+
     let tdId = createElement("td");
     let tdName = createElement("td");
     let tdPrice = createElement("td");
@@ -90,11 +92,13 @@ function renderCart() {
     let tdQuan = createElement("td");
 
     tdQuan.className = "tdQuan";
-    tdQuan.dataset.id = index;
+    tdId.dataset.id = index;
+
     let qty = createElement("input");
     qty.className = "Qty";
     qty.type = "number";
-    qty.value = data.addquan;
+    qty.value = data.quantity;
+    qty.setAttribute("min", 1) 
     tdQuan.appendChild(qty);
     qty.addEventListener("change", updateQuantity);
 
@@ -116,13 +120,11 @@ function renderCart() {
     tRow.appendChild(tdAtion);
     newTbody.appendChild(tRow);
     table.appendChild(newTbody);
-    totalPrice += parseInt(tdPrice.textContent)*parseInt(qty.value);
-    totalquan +=parseInt(qty.value)
+    totalPrice += parseInt(tdPrice.textContent);
     getBtn(newTbody);
     index++;
   }
   total.textContent = parseInt(totalPrice) + "$";
-  dataCheckout.totalstock=totalquan;
 }
 
 function clearrForm() {
@@ -132,24 +134,22 @@ function clearrForm() {
 }
 
 function updateQuantity(e) {
-  let qty = e.target.value;
-  let cartId = e.target.closest("td").dataset.id;
-  let index = dataCheckout.cart[cartId]
-  if (qty > index.quantity) {
+  let qty = parseInt(e.target.value);
+  let cartId = e.target.closest("tr").firstElementChild.textContent;
+  console.log(cartId)
+  let Index = dataCheckout.cart.findIndex(
+    (list) => parseInt(list.id) === parseInt(cartId)
+  );
+  let productIndex = dataStore.products.findIndex(pro => pro.id === parseInt(cartId))
+  if (qty > parseInt(dataStore.products[productIndex].quantity) - 1) {
     window.alert("Product not enough");
-    index.addquan = index.quantity - 1;
+  } else {
+    dataCheckout.cart[Index].quantity = qty;
+    dataCheckout.cart[Index].price = qty * parseInt(dataStore.products[Index].grossprice);
   }
-  else if (qty<=0){
-    index.addquan = 1;
-    
-  }else{
-    index.addquan = qty;
-    
-  }
-
+  
   saveData("dataCheckout", dataCheckout);
-  renderCart();
-  window.location.reload()
+  window.location.reload();
 }
 
 function removeElement(event) {
@@ -161,25 +161,55 @@ function removeElement(event) {
     dataCheckout.cart.splice(productId, 1);
     saveData("dataCheckout", dataCheckout);
   }
+  displayMessage();
 }
-
 function getBtn(tbody) {
   let btnRemove =
     tbody.lastElementChild.lastElementChild.lastElementChild.lastElementChild;
   btnRemove.addEventListener("click", removeElement);
 }
-
 function printer() {
   show(printReciept);
+  displayPrint();
 }
 
 function checkoutProduct() {
-  let income = total.textContent.replace("$", "");
-  historyData.push(parseInt(income));
-  saveData("historyData", historyData);
-  saveData('dataSoldout', dataCheckout)
-  removeData("dataCheckout");
-  window.location.reload();
+    let income = total.textContent.replace("$", "");
+    historyData.push(parseInt(income));
+    saveData("historyData",historyData);
+    for (let checkout of dataCheckout.cart) {
+        let Index = dataCheckout.cart.findIndex(
+          (list) => parseInt(list.id) === parseInt(checkout.id)
+        );
+        dataStore.products[Index].quantity -= dataCheckout.cart[Index].quantity;
+    }
+    printData = dataCheckout.cart;
+    let sum  =0;
+    for(let data of printData){
+      sum += data.quantity;
+    }
+    soldOut += sum
+    saveData('soldOut', soldOut)
+    saveData("dataStore", dataStore);
+    saveData("printData", printData);
+    removeData("dataCheckout");
+    window.location.reload();
+
+}
+
+function displayMessage() {
+  if (laodData("dataCheckout") === null || dataCheckout.cart.length === 0) {
+    show(message)
+  } else {
+    hide(message)
+  }
+}
+
+function displayPrint() {
+    let recieptData = laodData("printData");
+    for (let product of recieptData) {
+      console.log(product)
+     }
 }
 // ===============> GET ELEMENT <================
 let searchId = getElement("#search");
@@ -195,7 +225,11 @@ let message = getElement(".message");
 let btnPrint = getElement(".print");
 let printReciept = getElement("#print-reciept");
 const btn_print = getElement(".btn-print");
+
 let checkoutBtn = getElement(".check");
+
+let printList = getElement(".print-data");
+
 
 //==============>ADD EVENLISTENER <================
 
@@ -206,7 +240,8 @@ btn_print.addEventListener("click", () => {
 searchId.addEventListener("keyup", checkId);
 btnAdd.addEventListener("click", addCart);
 btnPrint.addEventListener("click", printer);
-checkoutBtn.addEventListener('click', checkoutProduct)
-
 // laodData("dataCheckout")
 renderCart();
+displayMessage();
+
+checkoutBtn.addEventListener('click', checkoutProduct)

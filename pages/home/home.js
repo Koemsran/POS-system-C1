@@ -25,3 +25,4 @@ for (let obj of dataStore.products) {
     store += parseInt(obj.quantity)
 }
 instock.textContent = store;
+soldout.textContent = laodData('soldOut');
