@@ -102,7 +102,7 @@ function renderCart() {
     tdQuan.appendChild(qty);
     qty.addEventListener("change", updateQuantity);
 
-    tdId.textContent = data.id;
+    tdId.textContent = "00"+data.id;
     tdName.textContent = data.name;
     tdPrice.textContent = data.price + "$";
 
