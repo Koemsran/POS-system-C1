@@ -188,8 +188,6 @@ function categorySelect() {
 
     }
 
-
-
 }
 
 function categoryfillter() {
@@ -209,10 +207,10 @@ function searchBar() {
     for (let td of tRow) {
         let td1 = td.firstElementChild.nextElementSibling.textContent.toUpperCase();
         if (td1.includes(input)) {
-            td.style.display = '';
+            show(td);
 
         } else {
-            td.style.display = 'none'
+            hide(td)
         }
     }
 }
@@ -223,9 +221,9 @@ function filterData(e) {
     for (let tr of tRow) {
         let category = tr.firstElementChild.nextElementSibling.nextElementSibling.textContent;
         if (category === cat) {
-            tr.style.display = '';
+            show(tr);
         } else {
-            tr.style.display = 'none';
+            hide(tr)
         }
     }
 }
@@ -233,7 +231,7 @@ function filterData(e) {
 function clearFilter() {
     let tRow = getElements('tbody tr');
     for (let tr of tRow) {
-        tr.style.display = '';
+        show(tr);
     }
     fill.value = 'Choose category'
 }
@@ -279,23 +277,15 @@ function viewElement(event) {
 
     let name = getElement('#name-tail');
     let cat = getElement('#category-tail');
-    let quan = getElement('#quan-tail');
     let stock = getElement('#stock-tail');
     let nPrice = getElement('#nprice-tail');
     let gPrice = getElement('#gprice-tail');
-    let date = getElement('.date');
-    let amount = getElement('.amount');
-    let price = getElement('.price');
-    let getDate = new Date();
     name.textContent = ": " + product.name;
     cat.textContent = ": " + product.category;
-    quan.textContent = ": " + product.quantity;
     stock.textContent = ": " + product.quantity;
     nPrice.textContent = ": " + product.netprice + "$";
     gPrice.textContent = ": " + product.grossprice + "$";
-    date.textContent = " : " +getDate;
-    amount.textContent =" : " + 3 +"(amount)"
-    price.textContent = ": 25$ (price)"
+    
     
 
 

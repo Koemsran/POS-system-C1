@@ -472,6 +472,10 @@ menu button:hover {
 .group-form {
     width: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 footer {
@@ -482,6 +486,7 @@ footer {
     align-items: center;
     gap: 30px;
     padding: 8px;
+    margin-bottom: 10px;
 }
 #card-total{
     border: 4px double teal;
