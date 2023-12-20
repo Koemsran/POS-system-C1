@@ -129,17 +129,19 @@ main {
 }
 
 .search-pro {
-
+    border: 1px  solid black;
     height: 55px;
     color: white;
 }
 
 #qty {
     height: 100px;
+    border: 1px  solid black;
+
 }
 
 #price-pro {
-
+    border: 1px  solid black;
     height: 55px;
     background-color: white;
 }
@@ -208,7 +210,8 @@ table {
 
 td,
 th {
-    border: 1px solid #dddddd;
+    border: 1px  solid black;
+    /* border: 1px solid #dddddd; */
     text-align: center;
     padding: 12px;
 }
@@ -377,6 +380,9 @@ form .describe {
     justify-content: space-between;
     align-items: end;
     
+}
+.tbody-print{
+    border: 1.5px solid black;
 }
 
 .print-btn {
