@@ -18,14 +18,14 @@ let dataCheckout = {
 };
 let soldOut = 0;
 let printData = [];
-if (laodData('soldOut')!== null){
+if (laodData('soldOut') !== null) {
   soldOut = laodData('soldOut')
 }
 if (laodData("dataCheckout") !== null) {
   dataCheckout = laodData("dataCheckout");
-} 
+}
 if (laodData("historyData") !== null) {
-    historyData = laodData("historyData");
+  historyData = laodData("historyData");
 }
 //==============> FUNCTION <==================
 function checkId() {
@@ -48,15 +48,15 @@ function checkId() {
   if (searchId.value === "") {
     hide(alert);
   }
-  if (namePro.textContent === "" || qty.textContent === "" ||  price.textContent === "") {
+  if (namePro.textContent === "" || qty.textContent === "" || price.textContent === "") {
     btnAdd.disabled = true;
     btnAdd.style.background = 'gray';
 
-} else {
+  } else {
     btnAdd.disabled = false;
     btnAdd.style.background = 'green';
 
-}
+  }
 }
 
 function addCart() {
@@ -98,7 +98,7 @@ function renderCart() {
     qty.className = "Qty";
     qty.type = "number";
     qty.value = data.quantity;
-    qty.setAttribute("min", 1) 
+    qty.setAttribute("min", 1)
     tdQuan.appendChild(qty);
     qty.addEventListener("change", updateQuantity);
 
@@ -147,7 +147,7 @@ function updateQuantity(e) {
     dataCheckout.cart[Index].quantity = qty;
     dataCheckout.cart[Index].price = qty * parseInt(dataStore.products[Index].grossprice);
   }
-  
+
   saveData("dataCheckout", dataCheckout);
   window.location.reload();
 }
@@ -174,26 +174,26 @@ function printer() {
 }
 
 function checkoutProduct() {
-    let income = total.textContent.replace("$", "");
-    historyData.push(parseInt(income));
-    saveData("historyData",historyData);
-    for (let checkout of dataCheckout.cart) {
-        let Index = dataCheckout.cart.findIndex(
-          (list) => parseInt(list.id) === parseInt(checkout.id)
-        );
-        dataStore.products[Index].quantity -= dataCheckout.cart[Index].quantity;
-    }
-    printData = dataCheckout.cart;
-    let sum  =0;
-    for(let data of printData){
-      sum += data.quantity;
-    }
-    soldOut += sum
-    saveData('soldOut', soldOut)
-    saveData("dataStore", dataStore);
-    saveData("printData", printData);
-    removeData("dataCheckout");
-    window.location.reload();
+  let income = total.textContent.replace("$", "");
+  historyData.push(parseInt(income));
+  saveData("historyData", historyData);
+  for (let checkout of dataCheckout.cart) {
+    let Index = dataCheckout.cart.findIndex(
+      (list) => parseInt(list.id) === parseInt(checkout.id)
+    );
+    dataStore.products[Index].quantity -= dataCheckout.cart[Index].quantity;
+  }
+  printData = dataCheckout.cart;
+  let sum = 0;
+  for (let data of printData) {
+    sum += data.quantity;
+  }
+  soldOut += sum
+  saveData('soldOut', soldOut)
+  saveData("dataStore", dataStore);
+  saveData("printData", printData);
+  removeData("dataCheckout");
+  window.location.reload();
 
 }
 
@@ -206,12 +206,39 @@ function displayMessage() {
 }
 
 function displayPrint() {
-    let recieptData = laodData("printData");
-    for (let product of recieptData) {
-      console.log(product)
-     }
+  let recieptData = laodData("printData");
+  let Amount = 0;
+  let total = 0;
+  for (let product of recieptData) {
+    tableReciept.remove()
+    let newTbody = createElement('tbody');
+    let tRow = createElement('tr');
+    let tdName = createElement('td');
+    tdName.className = "tdname";
+    let tdQuan = createElement('td');
+    let tdPrice = createElement('td');
+
+    tdName.textContent = product.name;
+    tdQuan.textContent =product.quantity;
+    tdPrice.textContent = product.price +"$";
+    tRow.appendChild(tdName)
+    tRow.appendChild(tdQuan)
+    tRow.appendChild(tdPrice)
+
+    newTbody.appendChild(tRow)
+    tablePrint.appendChild(newTbody)
+    Amount += product.quantity;
+    total+= product.price;
+
+  }
+  amount.textContent = Amount;
+  totalPrint.textContent = total +'$';
+
 }
 // ===============> GET ELEMENT <================
+let amount = getElement('.amount');
+let tablePrint = getElement('.table-reciept');
+let tableReciept = getElement('.tbody-print');
 let searchId = getElement("#search");
 let namePro = getElement(".search-pro");
 let qty = getElement("#qty span");
@@ -224,11 +251,9 @@ let total = getElement(".total");
 let message = getElement(".message");
 let btnPrint = getElement(".print");
 let printReciept = getElement("#print-reciept");
-const btn_print = getElement(".btn-print");
-
+let btn_print = getElement(".btn-print");
 let checkoutBtn = getElement(".check");
-
-let printList = getElement(".print-data");
+let totalPrint = getElement(".totalp");
 
 
 //==============>ADD EVENLISTENER <================

@@ -10,9 +10,7 @@ let startLogin = document.querySelector('.start-login');
 let iconEye = document.querySelector(".input-pass .off");
 let showPassIcon = document.querySelector('.input-pass .on');
 
-
 //<================ LOG IN FUNCTION ===================>
-
 function logIn(e) {
     e.preventDefault()
     if (userName.value === "pos" && password.value === "1234") {
@@ -39,7 +37,6 @@ function logIn(e) {
 }
 
 //<================ SHOW PASSWORD FUNCTION ===================>
-
 function showPassword(e){
     e.preventDefault()
     if(password.type === 'password'){

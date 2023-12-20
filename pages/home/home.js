@@ -18,7 +18,7 @@ let result = 0;
 for (let value of incomeValue) {
     result += value;
 }
-income.textContent = result;
+income.textContent = result + "$";
 
 let store = 0;
 for (let obj of dataStore.products) {
