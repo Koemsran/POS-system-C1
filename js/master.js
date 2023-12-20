@@ -16,7 +16,7 @@ let showPassIcon = document.querySelector('.input-pass .on');
 function logIn(e) {
     e.preventDefault()
     if (userName.value === "pos" && password.value === "1234") {
-        window.location.href = 'http://127.0.0.1:5500/pages/home/home.html'
+        window.location.href = 'https://pos-system-c1.vercel.app/pages/home/home.html'
         hide(startLogin)
         hide(nameError)
         hide(passError)
